@@ -3,28 +3,26 @@ import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
+  ApolloLink,
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
 import Auth from './utils/auth';
-
 /// IMPORT PAGES ///
 import Landing from './pages/Landing';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
-
 /// IMPORT COMPONENTS ///
 import ProtectRoute from './components/ProtectRoute';
-
 import './App.css';
-
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
-
+const endpoint2 = createHttpLink({
+  uri: 'https://graphql.icy.tools/graphql',
+})
 /// SET CONTEXT ///
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('id_token');
@@ -35,13 +33,16 @@ const authLink = setContext((_, { headers }) => {
     },
   };
 });
-
+const endpoint1 = authLink.concat(httpLink);
 /// SET UP CLIENT ///
 const client = new ApolloClient({
-  link: authLink.concat(httpLink),
+  link: ApolloLink.split(
+    operation => operation.getContext().clientName === 'endpoint2',
+    endpoint2, //if above
+    endpoint1
+),
   cache: new InMemoryCache(),
 });
-
 function App() {
   return (
     <ApolloProvider client={client}>
@@ -59,5 +60,4 @@ function App() {
     </ApolloProvider>
   );
 }
-
 export default App;

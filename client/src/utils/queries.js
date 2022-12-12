@@ -1,5 +1,4 @@
-import { gql } from "@apollo/client";
-
+import { useQuery, gql } from "@apollo/client";
 export const QUERY_USER = gql`
 query user($userId: ID!) {
   user(userId: $userId) {
@@ -18,28 +17,28 @@ query user($userId: ID!) {
   }
 }
 `;
-
-// export const QUERY_COURSE = gql`
-//   query course($courseId: ID!) {
-//   course(courseId: $courseId) {
-//     _id
-//     courseName
-//     startDate
-//     endDate
-//     description
-//     instructor
-//     students {
-//       _id
-//       firstName
-//       lastName
-//       course
-//       grades {
-//         _id
-//         assignmentName
-//         grade
-//       }
-//     }
-//     studentCount
-//   }
-// }
-// `;
+export const TRENDING_COLLECTIONS = gql`
+query TrendingCollections {
+  trendingCollections(orderBy: VOLUME, orderDirection: DESC) {
+    edges {
+      node {
+        address
+        ... on ERC721Contract {
+          name
+          stats {
+            totalSales
+            average
+            ceiling
+            floor
+            volume
+          }
+          symbol
+          unsafeOpenseaImageUrl
+        }
+      }
+    }
+    pageInfo {
+      endCursor
+    }
+  }
+}`;
