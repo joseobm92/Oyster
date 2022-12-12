@@ -19,27 +19,27 @@ query user($userId: ID!) {
 }
 `;
 
-export const QUERY_COURSE = gql`
-  query course($courseId: ID!) {
-  course(courseId: $courseId) {
-    _id
-    courseName
-    startDate
-    endDate
-    description
-    instructor
-    students {
-      _id
-      firstName
-      lastName
-      course
-      grades {
-        _id
-        assignmentName
-        grade
-      }
-    }
-    studentCount
-  }
-}
-`;
+// export const QUERY_COURSE = gql`
+//   query course($courseId: ID!) {
+//   course(courseId: $courseId) {
+//     _id
+//     courseName
+//     startDate
+//     endDate
+//     description
+//     instructor
+//     students {
+//       _id
+//       firstName
+//       lastName
+//       course
+//       grades {
+//         _id
+//         assignmentName
+//         grade
+//       }
+//     }
+//     studentCount
+//   }
+// }
+// `;
