@@ -11,7 +11,7 @@ const Nav = () => {
       };
   return (
     <div>
-      <nav className="navbar bg-dark navbar-expand-lg py-3 mb-4" id='navStyling'>
+      <nav className="navbar bg-black navbar-expand-lg py-3 border-bottom" id='navStyling'>
         <div className="container">
           <Link to='/' className='navbar-brand text-white'>
           <img className="logo" src={logo} alt='logo'></img>

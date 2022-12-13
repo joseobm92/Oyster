@@ -64,7 +64,7 @@ const Signup = () => {
             <label for="password" className="floatingPassword">Password</label>
           </div>
 
-          <button type="submit" className="btn btn-dark">Submit</button>
+          <button type="submit" className="btn btn-dark mb-3">Submit</button>
         </form>
 
             </div>

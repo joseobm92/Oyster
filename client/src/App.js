@@ -17,9 +17,11 @@ import Dashboard from './pages/Dashboard';
 /// IMPORT COMPONENTS ///
 import ProtectRoute from './components/ProtectRoute';
 import Nav from './components/Nav';
-import Collection
- from './components/Collection';
+import Collection from './components/Collection';
 import './App.css';
+import Collections from './pages/Collections'
+import Footer from './components/Footer'
+
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
@@ -60,11 +62,13 @@ function App() {
           <Route path='/signup' element={<Signup />} />
           <Route path='/login' element={<Login />} />
           <Route path='/collections/:address' element={<Collection />} />
+          <Route path='/collections' element={<Collections />} />
           <Route
             path='dashboard/:userId'
             element={Auth.loggedIn() ? <Dashboard /> : <ProtectRoute />}
           />
         </Routes>
+        < Footer/>
       </Router>
     </ApolloProvider>
     </>
