@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom';
 
 import Auth from '../utils/auth';
 
-import nft2 from '../images/nft3.json'
-import nft from '../images/newnft.json';
+import nft2 from '../images/nft2.json'
+import nft from '../images/nft.json';
 import Lottie from 'lottie-react'
 import ParticlesBg from 'particles-bg'
 
