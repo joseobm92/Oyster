@@ -23,12 +23,15 @@ const Collection = () => {
   // Check if data is returning from the `QUERY_SINGLE_COLLECTION`
   const collection = data || {};
 
+
   console.log(collection);
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
+  const collectionWebsite = collection.contract.unsafeOpenseaExternalUrl.toString()
+  console.log(typeof collectionWebsite);
   return (
     <div className='container'>
     <h1>Name: {collection.contract.name}</h1>
@@ -37,7 +40,10 @@ const Collection = () => {
     <p>Floor: {collection.contract.stats.floor}</p>
     <p>Sales: {collection.contract.stats.totalSales}</p>
     <p>Volume: {collection.contract.stats.volume}</p>
-    <Link to={collection.contract.unsafeOpenseaExternalUrl} className='text-decoration-none'>{collection.contract.unsafeOpenseaExternalUrl}</Link>
+    <a href={collectionWebsite} className='text-decoration-none' 
+       target='_blank' rel="noreferrer" >
+       {collectionWebsite}
+    </a>
     </div>
   );
 };
