@@ -6,24 +6,31 @@ import { Link } from 'react-router-dom';
 
 import Auth from '../utils/auth';
 
-import blockchain from '../images/blockchain.png'
+import nft2 from '../images/nft3.json'
+import nft from '../images/newnft.json';
+import Lottie from 'lottie-react'
+import ParticlesBg from 'particles-bg'
+
+
 
 const Landing = () => {
 
   return (
     <>
+    <ParticlesBg type="cobweb" bg={true} />
       {/* Showcase */}
-      <section className="bg-black text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
+      <section className=" text-dark p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
         <div className="container">
           <div className="d-sm-flex align-items-center justify-content-between">
             <div>
               <h1 className='showcase'>Real-time NFT market insights <span className="text-warning"></span> </h1>
               <p className="lead my-4">Retrieving NFT metadata from the blockchain is tedious and time-consuming. Our NFT app does the heavy lifting for you across Solana and Ethereum NFTs, making the data you need searchable and accessible.</p>
               <Link to='/collections'>
-                <button type="button" className="btn btn-light mb-3">Trending NFT Collections  <i className="bi bi-arrow-up-right"></i> </button>
+                <button type="button" className="btn btn-dark mb-3">Trending NFT Collections  <i className="bi bi-arrow-up-right"></i> </button>
               </Link>
             </div>
-            <img className="img-fluid d-none d-sm-block blockchain mb-3" src={blockchain} alt="showcase"></img>
+            <Lottie loop={true} animationData={nft} className='z-index-1000'/>
+            {/* <img className="img-fluid d-none d-sm-block blockchain mb-3" src={blockchain} alt="showcase"></img> */}
           </div>
         </div>
       </section>
