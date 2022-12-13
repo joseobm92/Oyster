@@ -29,7 +29,7 @@ const Landing = () => {
                 <button type="button" className="btn btn-dark mb-3">Trending NFT Collections  <i className="bi bi-arrow-up-right"></i> </button>
               </Link>
             </div>
-            <Lottie loop={true} animationData={nft} className='z-index-1000'/>
+            <Lottie loop={true} animationData={nft}/>
             {/* <img className="img-fluid d-none d-sm-block blockchain mb-3" src={blockchain} alt="showcase"></img> */}
           </div>
         </div>
