@@ -1,4 +1,4 @@
-import { useQuery, gql } from "@apollo/client";
+import { gql } from "@apollo/client";
 
 // Query single user
 export const QUERY_USER = gql`
@@ -7,18 +7,16 @@ query user($userId: ID!) {
     _id
     username
     email
-    courseCount
-    courses {
-      _id
-      courseName
-      startDate
-      endDate
-      description
-      instructor
-    }
+
   }
 }
 `;
+
+// collections {
+//   _id
+//   name
+//   address
+// }
 
 // Query Trending collections by Volume
 export const QUERY_TRENDING_COLLECTIONS = gql`
@@ -93,3 +91,20 @@ query TrendingCollections($timePeriod: TrendingCollectionsTimePeriodEnum, $order
     }
   }
 }`;
+
+// query logged in user
+export const QUERY_ME = gql`
+  query me {
+    me {
+      _id
+      username
+      email
+    }
+  }
+`;
+
+// collections {
+//   _id
+//   name
+//   address
+// }

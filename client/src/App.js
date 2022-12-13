@@ -61,12 +61,13 @@ function App() {
           <Route path='/' element={<Landing />} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/me' element={<Dashboard />} />
           <Route path='/collections/:address' element={<Collection />} />
           <Route path='/collections' element={<Collections />} />
-          <Route
+           <Route
             path='dashboard/:userId'
             element={Auth.loggedIn() ? <Dashboard /> : <ProtectRoute />}
-          />
+          /> 
         </Routes>
         < Footer/>
       </Router>
