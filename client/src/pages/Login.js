@@ -42,6 +42,8 @@ const Login = (props) => {
     });
   };
 
+  console.log(data);
+  
   return (
     <div>
       {data ? (
