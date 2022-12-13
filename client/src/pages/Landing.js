@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Nav from '../components/Nav'
 import { useQuery } from '@apollo/client';
-import { TRENDING_COLLECTIONS } from '../utils/queries';
+import { QUERY_TRENDING_COLLECTIONS } from '../utils/queries';
 const Landing = () => {
-  const {loading, error, data} = useQuery(TRENDING_COLLECTIONS, { context: {clientName: 'endpoint2'}});
+  const {loading, error, data} = useQuery(QUERY_TRENDING_COLLECTIONS, { context: {clientName: 'endpoint2'}});
   //console.log(data);
   if (loading) return null;
   if (error) return `Error! ${error}`;
@@ -19,7 +19,7 @@ const Landing = () => {
 
             <div key={collection.node.symbol} className="col-12 col-xl-6">
             <Link className="btn-light text-dark"
-                  to={`/collections/${collection._id}`}>
+                  to={`/collections/${collection.node.address}`}>
               <div className="card mb-3">
                 <h4 className="card-header bg-dark text-light p-2 m-0">
                   {collection.node.name} <br />
