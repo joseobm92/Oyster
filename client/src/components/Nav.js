@@ -2,7 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../images/logo.png';
 
+import Auth from '../utils/auth';
+
 const Nav = () => {
+    const logout = (event) => {
+        event.preventDefault();
+        Auth.logout();
+      };
   return (
     <div>
       <nav className="navbar bg-dark navbar-expand-lg py-3 mb-4" id='navStyling'>
@@ -16,7 +22,16 @@ const Nav = () => {
 
           <div className="collapse navbar-collapse" id="navmenu">
             <ul className="navbar-nav ms-auto ml-3 ">
-              <li className="nav-item ">
+            {Auth.loggedIn() ? (
+            <>
+            <Link to='/' className='nav-link text-white '>
+              <li className=" nav-item text-white m-2" onClick={logout}> Logout </li>
+            
+            </Link>
+            </>
+          ) : (
+            <>
+             <li className="nav-item ">
                 <Link to='/login' className='nav-link text-white '>
                    Login  <i className="bi bi-house"></i>
                 </Link>
@@ -26,6 +41,18 @@ const Nav = () => {
                   Sign Up <i className="bi bi-person-lines-fill"></i>
                 </Link>
               </li>
+            </>
+          )}
+              {/* <li className="nav-item ">
+                <Link to='/login' className='nav-link text-white '>
+                   Login  <i className="bi bi-house"></i>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to='/signup' className='nav-link text-white'>
+                  Sign Up <i className="bi bi-person-lines-fill"></i>
+                </Link>
+              </li> */}
 
             </ul>
           </div>
