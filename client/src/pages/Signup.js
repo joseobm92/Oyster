@@ -44,7 +44,6 @@ const Signup = () => {
 
   return (
     <main>
-       <Nav/>
       {data ? (
         <p variant='subtitle1'>Successfully created an account. You may now head{' '}<Link to='/'>back to the hompage.</Link></p>
       ) : (

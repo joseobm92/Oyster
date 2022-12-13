@@ -16,10 +16,13 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 /// IMPORT COMPONENTS ///
 import ProtectRoute from './components/ProtectRoute';
+import Nav from './components/Nav';
 import './App.css';
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
+
+// ICY TOOLS API ENDPOINT
 const endpoint2 = createHttpLink({
   uri: 'https://graphql.icy.tools/graphql',
 })
@@ -45,8 +48,11 @@ const client = new ApolloClient({
 });
 function App() {
   return (
+    <>
+    
     <ApolloProvider client={client}>
       <Router>
+      <Nav />
         <Routes>
           <Route path='/' element={<Landing />} />
           <Route path='/signup' element={<Signup />} />
@@ -58,6 +64,8 @@ function App() {
         </Routes>
       </Router>
     </ApolloProvider>
+    </>
+
   );
 }
 export default App;
