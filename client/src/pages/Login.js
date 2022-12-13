@@ -64,10 +64,10 @@ const Login = (props) => {
                   <label for="password" className="floatingPassword">Password</label>
                 </div>
 
-                <button type="submit" className="btn btn-dark ">Submit</button>
+                <button type="submit" className="btn btn-dark mb-3">Submit</button>
                 
               </form>
-              <p>If you don't have an account please sign up here<Link to='/signup' className='text-decoration-none'> signup</Link></p>
+              <p className= ''>If you don't have an account please sign up here<Link to='/signup' className='text-decoration-none'> signup</Link></p>
             </div>
 
           </div>

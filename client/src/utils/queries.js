@@ -70,3 +70,26 @@ query CollectionStats($address: String!) {
     address
   }
 }`;
+
+// Query to get custom search by Time period and order
+export const QUERY_COLLECTIONS_WITH_VARS = gql`
+query TrendingCollections($timePeriod: TrendingCollectionsTimePeriodEnum, $orderBy: TrendingCollectionsOrderByEnum, $first: Int) {
+  trendingCollections(timePeriod: $timePeriod, orderBy: $orderBy, first: $first) {
+    edges {
+      node {
+        ... on ERC721Contract {
+          name
+          address
+          symbol
+          unsafeOpenseaImageUrl
+          stats {
+            totalSales
+            volume
+            floor
+            average
+          }
+        }
+      }
+    }
+  }
+}`;
