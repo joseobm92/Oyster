@@ -18,8 +18,8 @@ const Collections = () => {
       <>
 
         <div className="container">
-          {Auth.loggedIn() ? (
-            <p> Welcome back {Auth.getUser()}</p>
+        {Auth.loggedIn() ? (
+            <p className='text-end mt-2'> Welcome back {Auth.getUser().data.username}</p>
           ) : (
             <p> </p>
 
