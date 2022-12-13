@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import Nav from '../components/Nav'
-
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 
@@ -44,7 +42,6 @@ const Signup = () => {
 
   return (
     <main>
-       <Nav/>
       {data ? (
         <p variant='subtitle1'>Successfully created an account. You may now head{' '}<Link to='/'>back to the hompage.</Link></p>
       ) : (

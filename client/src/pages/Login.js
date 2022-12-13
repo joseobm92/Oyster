@@ -44,7 +44,6 @@ const Login = (props) => {
 
   return (
     <div>
-      <Nav />
       {data ? (
         <p>Successfully logged in! You may now head{' '}<Link to='/'>back to the hompage.</Link></p>
       ) : (
@@ -66,8 +65,9 @@ const Login = (props) => {
                 </div>
 
                 <button type="submit" className="btn btn-dark ">Submit</button>
+                
               </form>
-
+              <p>If you don't have an account please sign up here<Link to='/signup' className='text-decoration-none'> signup</Link></p>
             </div>
 
           </div>

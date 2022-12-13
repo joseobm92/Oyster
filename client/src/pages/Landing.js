@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Nav from '../components/Nav'
 import { useQuery } from '@apollo/client';
-import { TRENDING_COLLECTIONS } from '../utils/queries';
+import { QUERY_TRENDING_COLLECTIONS } from '../utils/queries';
 const Landing = () => {
-  const {loading, error, data} = useQuery(TRENDING_COLLECTIONS, { context: {clientName: 'endpoint2'}});
+  const {loading, error, data} = useQuery(QUERY_TRENDING_COLLECTIONS, { context: {clientName: 'endpoint2'}});
   //console.log(data);
   if (loading) return null;
   if (error) return `Error! ${error}`;
@@ -16,22 +16,21 @@ const Landing = () => {
         <div className="flex-row justify-space-between my-4">
         {
           collections.map((collection) => (
+
             <div key={collection.node.symbol} className="col-12 col-xl-6">
+            <Link className="btn-light text-dark"
+                  to={`/collections/${collection.node.address}`}>
               <div className="card mb-3">
                 <h4 className="card-header bg-dark text-light p-2 m-0">
                   {collection.node.name} <br />
-                  <img src={collection.node.unsafeOpenseaImageUrl} alt=''></img>
+                  <img className='logo rounded m-2' src={collection.node.unsafeOpenseaImageUrl} alt=''></img>
                   <span className="text-white" style={{ fontSize: '1rem' }}>
                     Floor {collection.node.stats.floor} ETH</span>
                 </h4>
-                <Link
-                  className="btn btn-block btn-squared btn-light text-dark"
-                  to={`/profiles/${collection._id}`}
-                >
-                  View and endorse their skills.
-                </Link>
               </div>
+              </Link>
             </div>
+
           ))}
       </div>
       </>
