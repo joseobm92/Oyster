@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
@@ -34,17 +34,23 @@ const Signup = () => {
         variables: { ...formState },
       });
 
-      Auth.login(data.addUser.token, data.addUser.user._id);
+      Auth.login(data.signup.token, data.signup.user._id);
     } catch (error) {
       console.log(error);
     };
   };
 
+  console.log(data);
+
   return (
     <main>
       {data ? (
+        <>
+
         <p variant='subtitle1'>Successfully created an account. You may now head{' '}<Link to='/'>back to the hompage.</Link></p>
-      ) : (
+      
+        </>
+       ) : (
         <div className='container'>
           <div className='row justify-content-center'>
             <div className='col-md-4 mt-5'>
@@ -72,33 +78,6 @@ const Signup = () => {
           </div>
 
         </div>
-        // <div>
-        //   <h2>Sign Up</h2>
-        //   <form onSubmit={handleFormSubmit}>
-        //     <input
-        //       placeholder='Username'
-        //       name='username'
-        //       type='text'
-        //       value={formState.username}
-        //       onChange={handleChange}
-        //     />
-        //     <input
-        //       placeholder='Email'
-        //       name='email'
-        //       type='text'
-        //       value={formState.email}
-        //       onChange={handleChange}
-        //     />
-        //     <input
-        //       placeholder='Password'
-        //       name='password'
-        //       type='password'
-        //       value={formState.password}
-        //       onChange={handleChange}
-        //     />
-        //     <button type='submit'>Sign Up</button>
-        //   </form>
-        // </div>
       )}
       {error && (
         <div>

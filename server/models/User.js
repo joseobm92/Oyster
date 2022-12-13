@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const Collection = require('./Collection');
 const bcrypt = require('bcrypt');
 
 const userSchema = new Schema(
@@ -18,6 +19,12 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    collections: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Collection',
+      },
+    ],
   },
   {
     toJSON: {
