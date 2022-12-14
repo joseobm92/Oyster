@@ -21,6 +21,7 @@ import Collection from './components/Collection';
 import './App.css';
 import Collections from './pages/Collections'
 import Footer from './components/Footer'
+import ParticlesBg from 'particles-bg'
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -53,7 +54,7 @@ const client = new ApolloClient({
 function App() {
   return (
     <>
-    
+    <ParticlesBg className='w-25' type="cobweb" bg={true} />
     <ApolloProvider client={client}>
       <Router>
       <Nav />
@@ -69,7 +70,7 @@ function App() {
             element={Auth.loggedIn() ? <Dashboard /> : <ProtectRoute />}
           /> 
         </Routes>
-        < Footer/>
+        <Footer/>
       </Router>
     </ApolloProvider>
     </>

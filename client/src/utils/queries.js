@@ -92,6 +92,33 @@ query TrendingCollections($timePeriod: TrendingCollectionsTimePeriodEnum, $order
   }
 }`;
 
+// Query single collection log 
+export const QUERY_SINGLE_COLLECTION_LOG = gql`
+query Logs($address: String!) {
+  contract(address: $address) {
+    logs {
+      edges {
+        node {
+          type
+          token {
+            ... on ERC721Token {
+              tokenId
+              images {
+                url
+              }
+            }
+
+          }
+          ... on OrderLog {
+            priceInEth
+            estimatedConfirmedAt
+          }
+        }
+      }
+    }
+  }
+}`;
+
 // query logged in user
 export const QUERY_ME = gql`
   query me {
@@ -108,3 +135,45 @@ export const QUERY_ME = gql`
 //   name
 //   address
 // }
+
+
+// landing page query with logs 
+export const QUERY_TRENDING_WITH_LOGS = gql`
+query TrendingCollections($first: Int, $orderBy: TrendingCollectionsOrderByEnum, $timePeriod: TrendingCollectionsTimePeriodEnum, $logsFirst2: Int) {
+  trendingCollections(first: $first, orderBy: $orderBy, timePeriod: $timePeriod) {
+    edges {
+      node {
+        ... on ERC721Contract {
+          address
+          name
+          symbol
+          unsafeOpenseaImageUrl
+          stats {
+            volume
+            totalSales
+            floor
+            average
+          }
+          logs(first: $logsFirst2) {
+            edges {
+              node {
+                type
+                estimatedConfirmedAt
+                ... on OrderLog {
+                  priceInEth
+                  token {
+                    ... on ERC721Token {
+                      images {
+                        url
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}`;

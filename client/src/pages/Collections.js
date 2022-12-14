@@ -6,12 +6,16 @@ import { QUERY_TRENDING_COLLECTIONS } from '../utils/queries';
 
 import Auth from '../utils/auth';
 
-const Collections = () => {
+const Collections =  () => {
   const { loading, error, data } = useQuery(QUERY_TRENDING_COLLECTIONS, { context: { clientName: 'endpoint2' } });
   //console.log(data);
   if (loading) return null;
   if (error) return `Error! ${error}`;
-  const collections = data.trendingCollections.edges
+  const collections =  data.trendingCollections.edges
+
+ 
+
+
   console.log(collections);
   if (data) {
     return (
