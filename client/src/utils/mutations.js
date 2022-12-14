@@ -75,3 +75,12 @@ export const LOGIN_USER = gql`
   }
 }
 `;
+export const ADD_COLLECTION = gql`
+mutation Mutation($name: String!, $address: String!) {
+  addCollection(name: $name, address: $address) {
+    _id
+    address
+    name
+  }
+}
+`;
