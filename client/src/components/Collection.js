@@ -61,18 +61,38 @@ const Collection =  () => {
   // console.log(name);
 
   const collectionWebsite = collection.contract.unsafeOpenseaExternalUrl.toString();
-  const name = collection.contract.name
+  const collectionObj = {
+    name: collection.contract.name,
+    address: address,
+    symbol: collection.contract.symbol,
+    supply: collection.contract.circulatingSupply,
+    website: collectionWebsite,
+    logo: collection.contract.unsafeOpenseaImageUrl,
+    sales: collection.contract.stats.totalSales,
+    volume: collection.contract.stats.volume,
+    floor: collection.contract.stats.floor,
+    avg_price: collection.contract.stats.average
+  };
+
 
   const addToFavorites = async() => {
     //setName(collection.contract.name);
     console.log('THIS IS IN THE ADD TO FAVORITES FUNCTION');
-    console.log(name);
-    console.log(address);
+    console.log(collectionObj.name);
+    console.log(collectionObj);
     try {
       const { data } = await addCollection({
         variables: {
-          name,
-          address
+          address: collectionObj.address,
+          avg_price: collectionObj.avg_price,
+          logo: collectionObj.logo,
+          floor: collectionObj.floor,
+          name: collectionObj.name,
+          sales: collectionObj.sales,
+          supply: collectionObj.supply,
+          symbol: collectionObj.symbol,
+          volume: collectionObj.volume,
+          website: collectionObj.website
         },
       });
 

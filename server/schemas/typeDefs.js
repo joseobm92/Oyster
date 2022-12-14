@@ -9,9 +9,17 @@ const typeDefs = gql`
   }
 
   type Collection {
-    _id: ID!
-    name: String!
-    address: String!
+    _id: ID
+    name: String
+    symbol: String
+    address: String
+    supply: Float
+    website: String
+    logo: String
+    sales: Float
+    volume: Float
+    floor: Float
+    avg_price: Float
   }
 
   type Auth {
@@ -31,7 +39,16 @@ const typeDefs = gql`
   type Mutation {
     login (email: String!, password: String!): Auth
     signup (username: String!, email: String!, password: String!): Auth
-    addCollection (name: String!, address: String!) : Collection
+    addCollection (name: String,
+      symbol: String,
+      address: String,
+      supply: Float,
+      website: String,
+      logo: String,
+      sales: Float,
+      volume: Float,
+      floor: Float,
+      avg_price: Float) : Collection
     removeUser: User
   }
 `;

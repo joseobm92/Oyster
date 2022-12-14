@@ -20,14 +20,14 @@ const resolvers = {
     },
     
     user: async (parent, { userId }) => {
-      const userData = await User.findOne({ _id: userId });
+      const userData = await User.findOne({ _id: userId }).populate('collections');
       return userData;
     },
 
     // Get logged in user
     me: async (parent, args, context) => {
       if (context.user) {
-        const userData = await User.findOne({ _id: context.user._id });
+        const userData = await User.findOne({ _id: context.user._id }).populate('collections');
         return userData;
       }
       //throw new AuthenticationError('You need to be logged in!');
@@ -70,14 +70,23 @@ const resolvers = {
     },
 
     // Add a collection to a user 
-    addCollection: async (parent, { name, address }, context) => {
-      const collection = await Collection.create({ name, address });
-      await User.findOneAndUpdate(
-        { _id: context.user._id },
-        { $addToSet: { collections: collection._id } }
-      );
+    addCollection: async (parent, { 
+      name, symbol, address, supply, website,
+      logo, sales, volume, floor, avg_price 
+      }, context) => {
+      
+        const collection = await Collection.create({ name, symbol, address, 
+          supply, website,
+          logo, sales, volume, floor, avg_price  });
+
+          console.log(collection);
+          
+          await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { collections: collection._id } }
+        );
       return collection;
-    },
+      },
 
       // Set up mutation so a logged in user can only remove their profile and no one else's
       removeUser: async (parent, args, context) => {

@@ -2,12 +2,24 @@ import { gql } from "@apollo/client";
 
 // Query single user
 export const QUERY_USER = gql`
-query user($userId: ID!) {
+query Query($userId: ID!) {
   user(userId: $userId) {
     _id
-    username
+    collections {
+      address
+      name
+      _id
+      floor
+      avg_price
+      logo
+      sales
+      supply
+      symbol
+      volume
+      website
+    }
     email
-
+    username
   }
 }
 `;
@@ -121,20 +133,28 @@ query Logs($address: String!) {
 
 // query logged in user
 export const QUERY_ME = gql`
-  query me {
-    me {
+query Query {
+  me {
+    _id
+    collections {
       _id
-      username
-      email
+      address
+      floor
+      logo
+      avg_price
+      name
+      sales
+      supply
+      symbol
+      volume
+      website
     }
+    email
+    username
   }
+}
 `;
 
-// collections {
-//   _id
-//   name
-//   address
-// }
 
 
 // landing page query with logs 

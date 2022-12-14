@@ -7,10 +7,43 @@ const collectionSchema = new Schema(
             type: String,
             required: true,
         },
+        symbol: {
+            type: String,
+            required: true,
+        },
         address: {
             type: String,
             required: true,
         },
+        supply: {
+            type: Number,
+            required: true,
+        },
+        website: {
+            type: String,
+            required: true,
+        },
+        logo: {
+            type: String,
+            required: true,
+        },
+        sales: {
+            type: Number,
+            required: true,
+        }
+        ,
+        volume: {
+            type: Number,
+            required: true,
+        },
+        floor: {
+            type: Number,
+            required: true,
+        },
+        avg_price: {
+            type: Number,
+            required: true,
+        }
     }
 );
 
