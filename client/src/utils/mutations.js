@@ -38,7 +38,7 @@ export const ADD_USER = gql`
 // `;
 
 // export const ADD_ASSIGNMENT = gql`
-//   mutation addAssignment($assignmentName: String!, $grade: Int, $studentId: String) {
+//   mutation addAssignment($assignmentName: String!, $grade: Float, $studentId: String) {
 //   addAssignment(assignmentName: $assignmentName, grade: $grade, studentId: $studentId) {
 //     assignmentName
 //     grade
@@ -47,7 +47,7 @@ export const ADD_USER = gql`
 // `;
 
 // export const UPDATE_ASSIGNMENT = gql`
-//   mutation updateAssignment($assignmentId: String!, $newGrade: Int) {
+//   mutation updateAssignment($assignmentId: String!, $newGrade: Float) {
 //   updateAssignment(assignmentId: $assignmentId, newGrade: $newGrade) {
 //     assignmentName
 //     grade
@@ -76,11 +76,19 @@ export const LOGIN_USER = gql`
 }
 `;
 export const ADD_COLLECTION = gql`
-mutation Mutation($name: String!, $address: String!) {
-  addCollection(name: $name, address: $address) {
+mutation AddCollection($name: String, $symbol: String, $address: String, $supply: Float, $website: String, $sales: Float, $logo: String, $volume: Float, $floor: Float, $avg_price: Float) {
+  addCollection(name: $name, symbol: $symbol, address: $address, supply: $supply, website: $website, sales: $sales, logo: $logo, volume: $volume, floor: $floor, avg_price: $avg_price) {
     _id
     address
+    avg_price
+    logo
+    floor
     name
+    sales
+    supply
+    symbol
+    volume
+    website
   }
 }
 `;
