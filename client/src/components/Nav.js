@@ -44,7 +44,7 @@ const Nav = () => {
                     </Link>
                   </li>
                   <Link to="/" className="nav-link text-white ">
-                    <li className=" nav-item text-white m-2" onClick={logout}>
+                    <li className=" nav-item text-white" onClick={logout}>
                       {" "}
                       Logout{" "}
                     </li>
