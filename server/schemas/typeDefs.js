@@ -5,6 +5,7 @@ const typeDefs = gql`
     _id: ID!
     username: String!
     email: String!
+    collections: [Collection] 
   }
 
   type Collection {
@@ -20,7 +21,8 @@ const typeDefs = gql`
 
   type Query {
     user(userId: ID!): User
-    collection(userId: ID!): Collection
+    users: [User]
+    collection(collectionId: ID!): Collection
     collections(userId: ID!): [Collection]
     me: User
   }

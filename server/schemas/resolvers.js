@@ -14,6 +14,10 @@ const resolvers = {
 
     //   //throw new AuthenticationError('Not logged in');
     // },
+
+    users: async () => {
+      return await User.find().populate('collections');
+    },
     
     user: async (parent, { userId }) => {
       const userData = await User.findOne({ _id: userId });
@@ -33,7 +37,7 @@ const resolvers = {
       const params = userId ? { userId } : {};
       return Collection.find(params).sort({ createdAt: -1 });
     },
-    collection: async (parent, { userId }) => {
+    collection: async (parent, { collectionId }) => {
       return Collection.findOne({ _id: collectionId });
     },
 
