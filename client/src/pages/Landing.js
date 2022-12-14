@@ -9,7 +9,7 @@ import Auth from '../utils/auth';
 import nft2 from '../images/nft2.json'
 import nft from '../images/nft.json';
 import Lottie from 'lottie-react'
-
+import eth from '../images/eth.json'
 
 
 
@@ -29,6 +29,7 @@ const Landing = () => {
  
   if (loading) return null;
   if (error) return `Error! ${error}`;
+
   const collections = data.trendingCollections.edges;
 
   console.log(collections)
@@ -48,9 +49,9 @@ const Landing = () => {
                 <button type="button" className="btn btn-dark mb-3">Trending NFT Collections  <i className="bi bi-arrow-up-right"></i> </button>
               </Link>
             </div>
-            <div className='col-md-4 d-sm-none d-md-inline'>
+            <div className='col-md-4 '>
 
-            <Lottie loop={true} animationData={nft}/>
+            <Lottie loop={true} animationData={nft2}/>
             </div>
             {/* <img className="img-fluid d-none d-sm-block blockchain mb-3" src={blockchain} alt="showcase"></img> */}
           </div>
@@ -58,9 +59,14 @@ const Landing = () => {
       </section>
 
     {/* data section */}
-      <div className='container'>
+      <div className='container mt-5'>
         <div className='row'>
-          <div className='col-md-6'>
+          
+         
+          <div className='col-md-4 align-self-center'>
+          <Lottie loop={true} animationData={eth} />
+          </div>
+          <div className='col-md-8 border rounded p-4'>
           <h1>Top Sales in the past hour <span className="text-primary"> </span></h1>
           <div className="table-responsive">
             <table className="table table-borderless w-120  mt-4 table-hover bg-white ">
@@ -81,7 +87,7 @@ const Landing = () => {
                     <tr>
         
                     <td><Link className="text-decoration-none text-dark" to={`/collections/${collection.node.address}`}>  <img className='logo rounded m-2' src={collection.node.unsafeOpenseaImageUrl} alt=''></img>{collection.node.name} ({collection.node.symbol})</Link></td>
-                      <td>{collection.node.stats.totalSales} ETH <br /> <small> - </small></td>
+                      <td>{collection.node.stats.totalSales} <br /> <small> - </small></td>
                       <td>{collection.node.stats.volume} ETH <br /> <small> - </small></td>
                       <td>{collection.node.stats.floor} ETH <br /> <small> - </small></td>
                       <td>{collection.node.stats.average} ETH <br /> <small> - </small> </td>
@@ -92,40 +98,6 @@ const Landing = () => {
                 ))}
             </table>
           </div>
-          </div>
-          <div className='col-md-4'>
-          {/* <div className="table-responsive">
-            <table className="table table-borderless w-120  mt-4 table-hover ">
-
-              <thead>
-                <tr>
-                  <th scope="col">Collection </th>
-                  <th scope="col">Token </th>
-                  <th scope="col">Transaction Type </th>
-                  <th scope="col">Price </th>
-                  <th scope="col">Time of tx </th>
-                </tr>
-              </thead>
-              {
-                collections.map((collection, index) => (
-                  <tbody key={index} >
-                  
-                  <Link className="text-decoration-none text-dark" to={`/collections/${collection.node.address}`}> <td> <img className='logo rounded m-2' src={collection.node.unsafeOpenseaImageUrl} alt=''></img>{collection.node.name} ({collection.node.symbol})</td></Link>
-                  {collection.node.logs.edges.map((log, index) => (
-                    <tr key={index}>                      
-                      <span >{log.node.priceInEth}</span>
-                      
-                      <td> <img src={log.node.token.images[0].url} alt='token-img'></img> <br /> <small> - </small></td>
-                      <td>{log.node.type}  <br /> <small> - </small></td>
-                      <td>{log.node.priceInEth} ETH <br /> <small> - </small></td>
-                      <td>{log.node.estimatedConfirmedAt}  <br /> <small> - </small> </td>
-                      </tr> 
-                 ))}
-                  
-                  </tbody>
-                ))}
-            </table>
-          </div> */}
           </div>
 
         </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate, useParams } from 'react-router-dom';
+import { Navigate, useParams, Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
 
@@ -19,6 +19,7 @@ const Profile = () => {
   console.log(data);
 
   console.log(Auth.getUser());
+
   const user = data?.me || data?.user || {};
   console.log(user);
 //  navigate to personal profile page if username is yours
@@ -40,23 +41,59 @@ const Profile = () => {
   }
 
   return (
-    <div>
-      <div className="flex-row justify-center mb-3">
+    <div className='container mt-4'>
+
+<h1> Dashboard <span className="text-primary"> </span></h1>
+<small>Welcome back,<span className="text-primary"> {user.username}  </span> </small>
+<div className="table-responsive">
+  <table className="table table-borderless w-120  mt-4 table-hover ">
+
+    <thead>
+      <tr>
+        
+        <th scope="col">Collection </th>
+        <th scope="col">Floor Price </th>
+        <th scope="col">Avg Price </th>
+        <th scope="col">Supply </th>
+        <th scope="col">Volume </th>
+        
+      </tr>
+    </thead>
+    {
+      user.collections.map((favorite) => (
+        <tbody>
+
+          <tr>
+            
+            <Link className="text-decoration-none text-dark" to={`/collections/${favorite.address}`}> <td> <img className='logo rounded m-2' src={favorite.logo} alt=''></img>{favorite.name} </td></Link>
+            <td>{favorite.floor} ETH <br /> <small> - </small></td>
+            <td>{favorite.avg_price} ETH <br /> <small> - </small> </td>
+            <td>{favorite.supply} <br /> <small> - </small> </td>
+            <td>{favorite.volume} ETH <br /> <small> - </small> </td>
+          </tr>
+
+        </tbody>
+      ))}
+  </table>
+</div>
+
+      {/* <div className="flex-row justify-center mb-3">
         <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
           Viewing {userId ? `${user.username}'s` : 'your'} profile. 
         </h2>
+        <h2> {user.collections[0].name}</h2>
 
         <div className="col-12 col-md-10 mb-5">
         </div>
-        {/* {!userParam && (
+        {!userParam && (
           <div
             className="col-12 col-md-10 mb-3 p-3"
             style={{ border: '1px dotted #1a1a1a' }}
           >
            
           </div>
-        )} */}
-      </div>
+        )}
+      </div> */}
     </div>
   );
 };
