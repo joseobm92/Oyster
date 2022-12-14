@@ -1,25 +1,44 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// import { useQuery } from '@apollo/client';
-// import { QUERY_TRENDING_COLLECTIONS } from '../utils/queries';
+ import { useQuery } from '@apollo/client';
+ import { QUERY_TRENDING_WITH_LOGS } from '../utils/queries';
 
 import Auth from '../utils/auth';
 
 import nft2 from '../images/nft2.json'
 import nft from '../images/nft.json';
 import Lottie from 'lottie-react'
-import ParticlesBg from 'particles-bg'
+
 
 
 
 const Landing = () => {
 
+  const { loading, error, data } = useQuery(QUERY_TRENDING_WITH_LOGS,
+    { 
+      context: { clientName: 'endpoint2' },
+      variables: {
+        timePeriod: "ONE_HOUR",
+        orderBy: "SALES",
+        first: 5,
+        logsFirst2: 5,
+      }
+    }
+  );
+ 
+  if (loading) return null;
+  if (error) return `Error! ${error}`;
+  const collections = data.trendingCollections.edges;
+
+  console.log(collections)
+
   return (
     <>
-    <ParticlesBg type="cobweb" bg={true} />
+    
       {/* Showcase */}
       <section className=" text-dark p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
+
         <div className="container">
           <div className="d-sm-flex align-items-center justify-content-between">
             <div>
@@ -34,6 +53,81 @@ const Landing = () => {
           </div>
         </div>
       </section>
+
+    {/* data section */}
+      <div className='container'>
+        <div className='row'>
+          <div className='col-md-6'>
+          <h1>Top Sales in the past hour <span className="text-primary"> </span></h1>
+          <div className="table-responsive">
+            <table className="table table-borderless w-120  mt-4 table-hover bg-white ">
+
+              <thead>
+                <tr>
+                  <th scope="col">Collection </th>
+                  <th scope="col">Sales </th>
+                  <th scope="col">Volume </th>
+                  <th scope="col">Floor Price </th>
+                  <th scope="col">Avg Price </th>
+                </tr>
+              </thead>
+              {
+                collections.map((collection, index) => (
+                  <tbody key={index}>
+
+                    <tr>
+        
+                    <td><Link className="text-decoration-none text-dark" to={`/collections/${collection.node.address}`}>  <img className='logo rounded m-2' src={collection.node.unsafeOpenseaImageUrl} alt=''></img>{collection.node.name} ({collection.node.symbol})</Link></td>
+                      <td>{collection.node.stats.totalSales} ETH <br /> <small> - </small></td>
+                      <td>{collection.node.stats.volume} ETH <br /> <small> - </small></td>
+                      <td>{collection.node.stats.floor} ETH <br /> <small> - </small></td>
+                      <td>{collection.node.stats.average} ETH <br /> <small> - </small> </td>
+
+                    </tr>
+
+                  </tbody>
+                ))}
+            </table>
+          </div>
+          </div>
+          <div className='col-md-4'>
+          {/* <div className="table-responsive">
+            <table className="table table-borderless w-120  mt-4 table-hover ">
+
+              <thead>
+                <tr>
+                  <th scope="col">Collection </th>
+                  <th scope="col">Token </th>
+                  <th scope="col">Transaction Type </th>
+                  <th scope="col">Price </th>
+                  <th scope="col">Time of tx </th>
+                </tr>
+              </thead>
+              {
+                collections.map((collection, index) => (
+                  <tbody key={index} >
+                  
+                  <Link className="text-decoration-none text-dark" to={`/collections/${collection.node.address}`}> <td> <img className='logo rounded m-2' src={collection.node.unsafeOpenseaImageUrl} alt=''></img>{collection.node.name} ({collection.node.symbol})</td></Link>
+                  {collection.node.logs.edges.map((log, index) => (
+                    <tr key={index}>                      
+                      <span >{log.node.priceInEth}</span>
+                      
+                      <td> <img src={log.node.token.images[0].url} alt='token-img'></img> <br /> <small> - </small></td>
+                      <td>{log.node.type}  <br /> <small> - </small></td>
+                      <td>{log.node.priceInEth} ETH <br /> <small> - </small></td>
+                      <td>{log.node.estimatedConfirmedAt}  <br /> <small> - </small> </td>
+                      </tr> 
+                 ))}
+                  
+                  </tbody>
+                ))}
+            </table>
+          </div> */}
+          </div>
+
+        </div>
+
+      </div>
 
 
 

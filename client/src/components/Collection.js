@@ -6,7 +6,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_SINGLE_COLLECTION } from '../utils/queries';
 
 
-const Collection = () => {
+const Collection =  () => {
   const { address } = useParams();
 
 
@@ -21,7 +21,7 @@ const Collection = () => {
   );
 
   // Check if data is returning from the `QUERY_SINGLE_COLLECTION`
-  const collection = data || {};
+  const collection =  data || {};
 
 
   console.log(collection);
