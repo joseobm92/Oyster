@@ -31,15 +31,15 @@ const Nav = () => {
 
           <div className="collapse navbar-collapse" id="navmenu">
             <ul className="navbar-nav ms-auto ml-3 ">
-            <li className="nav-item">
+              <li className="nav-item">
                 <Link to="/collections" className="nav-link text-white">
-                  Trending 
+                  Trending
                 </Link>
               </li>
               {Auth.loggedIn() ? (
                 <>
                   <Link to="/" className="nav-link text-white ">
-                    <li className=" nav-item text-white m-2" onClick={logout}>
+                    <li className=" nav-item text-white" onClick={logout}>
                       {" "}
                       Logout{" "}
                     </li>
@@ -60,7 +60,6 @@ const Nav = () => {
                 </>
               )}
 
-             
               {/* <li className="nav-item ">
                 <Link to='/login' className='nav-link text-white '>
                    Login  <i className="bi bi-house"></i>
