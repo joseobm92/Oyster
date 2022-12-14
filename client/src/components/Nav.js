@@ -26,7 +26,7 @@ const Nav = () => {
             data-bs-toggle="collapse"
             data-bs-target="#navmenu"
           >
-            <span className="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon bg-info"></span>
           </button>
 
           <div className="collapse navbar-collapse" id="navmenu">
