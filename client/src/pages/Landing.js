@@ -88,9 +88,9 @@ const Landing = () => {
         
                     <td><Link className="text-decoration-none text-dark" to={`/collections/${collection.node.address}`}>  <img className='logo rounded m-2' src={collection.node.unsafeOpenseaImageUrl} alt=''></img>{collection.node.name} ({collection.node.symbol})</Link></td>
                       <td>{collection.node.stats.totalSales} <br /> <small> - </small></td>
-                      <td>{collection.node.stats.volume} ETH <br /> <small> - </small></td>
+                      <td>{collection.node.stats.volume.toFixed(2)} ETH <br /> <small> - </small></td>
                       <td>{collection.node.stats.floor} ETH <br /> <small> - </small></td>
-                      <td>{collection.node.stats.average} ETH <br /> <small> - </small> </td>
+                      <td>{collection.node.stats.average.toFixed(4)} ETH <br /> <small> - </small> </td>
 
                     </tr>
 
