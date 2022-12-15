@@ -6,7 +6,8 @@ import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_SINGLE_COLLECTION, QUERY_ME } from "../utils/queries";
 import { ADD_COLLECTION } from "../utils/mutations";
 
-import Auth from '../utils/auth'
+import Auth from "../utils/auth";
+
 
 const Collection = () => {
   const { address } = useParams();
@@ -57,10 +58,9 @@ const Collection = () => {
   //     setCollectionWebsite(collection.contract.unsafeOpenseaExternalUrl.toString());
   // }
 
+  const collectionWebsite = collection.contract.unsafeOpenseaExternalUrl;
 
-    const collectionWebsite = collection.contract.unsafeOpenseaExternalUrl;
-  
-    const collectionObj = {
+  const collectionObj = {
     name: collection.contract.name,
     address: address,
     symbol: collection.contract.symbol,
@@ -102,70 +102,83 @@ const Collection = () => {
 
   return (
     <div className="container mt-5 mb-5">
-      <div className='row justify-content-center'>
-      <div className='col-sm-2'>
-      <div className="card collection">
-        <img
-          src={collection.contract.unsafeOpenseaImageUrl}
-          className="card-img-top"
-          alt="nft"
-        ></img>
-        <div className="card-body">
-          <h4 className="card-title">{collection.contract.name}</h4>
-          <ul className="list-group list-group-flush">
-            <li className="list-group-item">
-              Circulating Supply: {collection.contract.circulatingSupply}
-            </li>
-            <li className="list-group-item">
-              Floor: {collection.contract.stats.floor} ETH
-            </li>
-            <li className="list-group-item">
-              Sales: {collection.contract.stats.totalSales}
-            </li>
-            <li className="list-group-item"> Website: 
-              <a
-                href={collectionWebsite}
-                className="text-decoration-none"
-                target="_blank"
-                rel="noreferrer"
-              >
-               {collectionWebsite}
-              </a>
-            </li>
-          </ul>
-          {Auth.loggedIn() ? (
-            <Link to='/me'> <button className='btn btn-dark' onClick={addToFavorites}>Add To Favorites</button> </Link> 
-          ) : (
-            <Link to='/login'>
-            <button className='btn btn-dark'>Add To Favorites</button>
-            </Link>
-          )}
-          {/* <button className='btn btn-dark' onClick={addToFavorites}>Add To Favorites</button> */}
+      <div className="row justify-content-center ">
+        <div className="col-md-5">
+          <div className="card collection">
+            <img
+              src={collection.contract.unsafeOpenseaImageUrl}
+              className="card-img-top"
+              alt="nft"
+            ></img>
+            <div className="card-body">
+              <h4 className="card-title">{collection.contract.name}</h4>
+              <ul className="list-group list-group-flush">
+                <li className="list-group-item">
+                  Circulating Supply: {collection.contract.circulatingSupply}
+                </li>
+                <li className="list-group-item">
+                  Floor: {collection.contract.stats.floor} ETH
+                </li>
+                <li className="list-group-item">
+                  Sales: {collection.contract.stats.totalSales}
+                </li>
+                <li className="list-group-item">
+                  Volume: {collection.contract.stats.volume}
+                </li>
+                <li className="list-group-item">
+                  Avg Price: {collection.contract.stats.average.toFixed(4)}
+                </li>
+               
+              </ul>
+              {Auth.loggedIn() ? (
+                <Link to="/me">
+                  {" "}
+                  <button className="btn btn-dark" onClick={addToFavorites}>
+                    Add To Favorites
+                  </button>{" "}
+                </Link>
+              ) : (
+                <Link to="/login">
+                  <button className="btn btn-dark">Add To Favorites</button>
+                </Link>
+              )}
+              {/* <button className='btn btn-dark' onClick={addToFavorites}>Add To Favorites</button> */}
+            </div>
+          </div>
+        </div>
+
+        <div className="col-md-6">
+          <div className="card ">
+            <div className="card-body">
+              <h3>Description</h3>
+              <p> {collection.contract.unsafeOpenseaDescription}</p>
+              <ul className="list-group list-group-flush">
+                <li className="list-group-item">
+                  {" "}
+                  Website:
+                  <a
+                    href={collectionWebsite}
+                    className="text-decoration-none"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {collectionWebsite}
+                  </a>
+                </li>
+                <li className="list-group-item">
+                  Token Standard: {collection.contract.tokenStandard}
+                </li>
+                <li className="list-group-item">
+                <Link to={`https://etherscan.io/address/${collection.contract.address}`} className='text-decoration-none text-black'>
+                Etherscan Link             
+                </Link>
+                </li>
+               
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
-      </div>
-
-      </div>
-
-      {/* <h1>Name: {collection.contract.name}</h1>
-      <img src={collection.contract.unsafeOpenseaImageUrl} alt="logo"></img>
-      <p>Circulating Supply: {collection.contract.circulatingSupply}</p>
-      <p>Floor: {collection.contract.stats.floor}</p>
-      <p>Sales: {collection.contract.stats.totalSales}</p>
-      <p>Volume: {collection.contract.stats.volume}</p>
-      <a
-        href={collectionWebsite}
-        className="text-decoration-none"
-        target="_blank"
-        rel="noreferrer"
-      >
-        {collectionWebsite}
-      </a>
-      <button onClick={addToFavorites}>Add To Favorites</button> */}
-      {/* <p>You clicked {name} times</p>
-      <button onClick={() => setName(collection.contract.name)}>
-        Click me
-      </button> */}
     </div>
   );
 };

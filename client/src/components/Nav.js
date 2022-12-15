@@ -75,11 +75,30 @@ const Nav = () => {
               {/* <li>
                 <ConnectButton showBalance={false} />
               </li> */}
-              <li className="nav-item">
+              <li className="nav-item dropdown ">
+          <a className="nav-link dropdown-toggle text-white"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Products
+          </a>
+          <ul className="dropdown-menu">
+            <Link to='/collections/trending' className='text-decoration-none'>
+
+            <li><a className="dropdown-item" >Trending</a></li>
+            </Link>
+            <Link to='/collections/volume' className='text-decoration-none'>
+            
+            <li><a className="dropdown-item" >By Volume</a></li>
+            </Link>
+            <Link to='/collections/sales' className='text-decoration-none'>
+            
+            <li><a className="dropdown-item" >By Sales</a></li>
+            </Link>
+          </ul>
+        </li>
+              {/* <li className="nav-item">
                 <Link to="/collections" className="nav-link text-white">
                   Trending 
                 </Link>
-              </li>
+              </li> */}
               {Auth.loggedIn() ? (
                 <>
                   <li className="nav-item">
@@ -112,7 +131,10 @@ const Nav = () => {
           </div>
         </div>
       </nav>
+      <div className='container m-2'>
+
       <ConnectButton showBalance={false} />
+      </div>
     </div>
   );
 };

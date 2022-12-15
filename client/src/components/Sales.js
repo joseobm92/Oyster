@@ -4,6 +4,8 @@ import { useQuery } from "@apollo/client";
 import { QUERY_COLLECTIONS_WITH_VARS } from "../utils/queries";
 import Auth from "../utils/auth";
 
+
+
 const Sales = () => {
   const { loading, error, data } = useQuery(QUERY_COLLECTIONS_WITH_VARS, {
     context: { clientName: "endpoint2" },
@@ -26,10 +28,10 @@ const Sales = () => {
       <>
         <Link to="/collections/trending">
           {" "}
-          <button>Trending</button>
+          <button className='btn btn-dark m-2'>Trending <i class="bi bi-arrow-up-right-square"></i></button>
         </Link>
         <Link to="/collections/volume">
-          <button>Volume</button>
+          <button className='btn btn-dark m-2'>Volume <i class="bi bi-arrow-up-right-square"></i></button>
         </Link>
         <div className="container">
           {Auth.loggedIn() ? (
@@ -41,11 +43,11 @@ const Sales = () => {
             <p> </p>
           )}
           <h1>
-            Trending By Volume <span className="text-primary"> </span>
+            Trending By  <span className="text-primary"> Sales </span>
           </h1>
 
           <div className="table-responsive">
-            <table className="table table-borderless w-120  mt-4  bg-white ">
+            <table className="table table-borderless w-120  mt-4  bg-white table-hover ">
               <thead>
                 <tr>
                   <th scope="col">Collection </th>
