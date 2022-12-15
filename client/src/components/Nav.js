@@ -62,12 +62,12 @@ const Nav = () => {
             <span className="mx-3">OYSTER</span>
           </Link>
           <button
-            className="navbar-toggler"
+            className="custom- toggler navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navmenu"
           >
-            <span className="navbar-toggler-icon bg-info"></span>
+            <span className="custom-toggler navbar-toggler-icon"></span>
           </button>
 
           <div className="collapse navbar-collapse" id="navmenu">
