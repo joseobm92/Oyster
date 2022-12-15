@@ -85,12 +85,12 @@ const Profile = () => {
       </tr>
     </thead>
     {
-      user.collections.map((favorite) => (
-        <tbody>
+      user.collections.map((favorite, index) => (
+        <tbody key={index}>
 
           <tr>
             
-            <Link className="text-decoration-none text-dark" to={`/collections/${favorite.address}`}> <td> <img className='logo rounded m-2' src={favorite.logo} alt=''></img>{favorite.name} </td></Link>
+            <td><Link className="text-decoration-none text-dark" to={`/collections/${favorite.address}`}>  <img className='logo rounded m-2' src={favorite.logo} alt=''></img>{favorite.name} </Link></td>
             <td>{favorite.floor} ETH <br /> <small> - </small></td>
             <td>{favorite.avg_price} ETH <br /> <small> - </small> </td>
             <td>{favorite.supply} <br /> <small> - </small> </td>

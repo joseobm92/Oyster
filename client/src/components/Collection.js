@@ -57,6 +57,7 @@ const Collection = () => {
   //     setCollectionWebsite(collection.contract.unsafeOpenseaExternalUrl.toString());
   // }
 
+
     const collectionWebsite = collection.contract.unsafeOpenseaExternalUrl.toString();
   
     const collectionObj = {
