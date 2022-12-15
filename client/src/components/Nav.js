@@ -20,13 +20,19 @@ const Nav = () => {
             <img className="logo" src={logo} alt="logo"></img>
             <span className="mx-3">OYSTER</span>
           </Link>
+
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Bored Ape Yacht Club"></input>
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search Collections</button>
+        </form>
+
           <button
-            className="navbar-toggler"
+            className="custom-toggler navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navmenu"
           >
-            <span className="navbar-toggler-icon bg-info"></span>
+            <span className="custom-toggeler-icon navbar-toggler-icon"></span>
           </button>
 
           <div className="collapse navbar-collapse" id="navmenu">
