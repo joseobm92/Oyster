@@ -1,4 +1,6 @@
 import React from 'react';
+
+// Import APOLLO CLIENT React Router & Authentication
 import {
   ApolloClient,
   InMemoryCache,
@@ -9,6 +11,21 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Auth from './utils/auth';
+
+
+// Import  RainbowKit, Wagmi & Ethers
+import '@rainbow-me/rainbowkit/styles.css';
+import {
+  getDefaultWallets,
+  RainbowKitProvider,
+  lightTheme,
+  darkTheme,
+} from '@rainbow-me/rainbowkit';
+import { configureChains, createClient, WagmiConfig } from 'wagmi';
+import { mainnet } from 'wagmi/chains';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { publicProvider } from 'wagmi/providers/public';
+
 /// IMPORT PAGES ///
 import Landing from './pages/Landing';
 import Signup from './pages/Signup';
@@ -51,28 +68,60 @@ const client = new ApolloClient({
 ),
   cache: new InMemoryCache(),
 });
+
+// Configure chains, connector & wagmi client
+const { chains, provider } = configureChains(
+  [mainnet],
+  [
+    alchemyProvider({ apiKey: "w3CWn13KLWvDk0eWH6eo9qJL3zeP-2Dg" }),
+    publicProvider()
+  ]
+);
+
+const { connectors } = getDefaultWallets({
+  appName: 'Oyster',
+  chains
+});
+
+const wagmiClient = createClient({
+  autoConnect: true,
+  connectors,
+  provider
+})
+
+
+
 function App() {
   return (
     <>
-    <ParticlesBg className='w-25' type="cobweb" bg={true} />
-    <ApolloProvider client={client}>
-      <Router>
-      <Nav />
-        <Routes>
-          <Route path='/' element={<Landing />} />
-          <Route path='/signup' element={<Signup />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/me' element={<Dashboard />} />
-          <Route path='/collections/:address' element={<Collection />} />
-          <Route path='/collections' element={<Collections />} />
-           <Route
-            path='dashboard/:userId'
-            element={Auth.loggedIn() ? <Dashboard /> : <ProtectRoute />}
-          /> 
-        </Routes>
-        <Footer/>
-      </Router>
-    </ApolloProvider>
+    <WagmiConfig client={wagmiClient}>
+      <RainbowKitProvider chains={chains} 
+                          theme={{
+                            lightMode: lightTheme(),
+                            darkMode: darkTheme(),
+                          }}
+                          >      
+        <ParticlesBg className='w-25' type="cobweb" bg={true} />
+        <ApolloProvider client={client}>
+          <Router>
+          <Nav />
+            <Routes>
+              <Route path='/' element={<Landing />} />
+              <Route path='/signup' element={<Signup />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/me' element={<Dashboard />} />
+              <Route path='/collections/:address' element={<Collection />} />
+              <Route path='/collections' element={<Collections />} />
+              <Route
+                path='dashboard/:userId'
+                element={Auth.loggedIn() ? <Dashboard /> : <ProtectRoute />}
+              /> 
+            </Routes>
+            <Footer/>
+          </Router>
+        </ApolloProvider>
+      </RainbowKitProvider>
+    </WagmiConfig>
     </>
 
   );
