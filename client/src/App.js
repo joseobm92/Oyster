@@ -40,6 +40,8 @@ import Collections from './pages/Collections'
 import Footer from './components/Footer'
 import ParticlesBg from 'particles-bg'
 
+import Particles from './components/Particles'
+
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
@@ -101,7 +103,8 @@ function App() {
                             darkMode: darkTheme(),
                           }}
                           >      
-        <ParticlesBg className='w-25' type="cobweb" bg={true} />
+                          <Particles/>
+        {/* <ParticlesBg className='w-25' type="cobweb" bg={true} /> */}
         <ApolloProvider client={client}>
           <Router>
           <Nav />
