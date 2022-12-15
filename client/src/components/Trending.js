@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_TRENDING_COLLECTIONS } from "../utils/queries";
 
+import loadingImg from '../images/loading.json'
+
 import Auth from "../utils/auth";
 
 const Trending = () => {
@@ -21,10 +23,10 @@ const Trending = () => {
       <>
         <Link to="/collections/sales">
           {" "}
-          <button>Sales</button>
+          <button className='btn btn-dark m-2'>Sales <i class="bi bi-arrow-up-right-square"></i></button>
         </Link>
         <Link to="/collections/volume">
-          <button>Volume</button>
+          <button className='btn btn-dark m-2'>Volume <i class="bi bi-arrow-up-right-square"></i></button>
         </Link>
         <div className="container">
           {Auth.loggedIn() ? (
@@ -40,7 +42,7 @@ const Trending = () => {
           </h1>
 
           <div className="table-responsive">
-            <table className="table table-borderless w-120  mt-4  bg-white ">
+            <table className="table table-borderless w-120  mt-4  bg-white table-hover ">
               <thead>
                 <tr>
                   <th scope="col">Collection </th>

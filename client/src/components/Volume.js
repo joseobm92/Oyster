@@ -26,10 +26,10 @@ const Volume = () => {
       <>
         <Link to="/collections/trending">
           {" "}
-          <button>Trending</button>
+          <button className='btn btn-dark m-2'>Trending <i class="bi bi-arrow-up-right-square"></i></button>
         </Link>
         <Link to="/collections/sales">
-          <button>Sales</button>
+          <button className='btn btn-dark m-2'>Sales <i class="bi bi-arrow-up-right-square"></i></button>
         </Link>
         <div className="container">
           {Auth.loggedIn() ? (
@@ -41,11 +41,11 @@ const Volume = () => {
             <p> </p>
           )}
           <h1>
-            Trending By Volume <span className="text-primary"> </span>
+            Trending By <span className="text-primary">Volume  </span>
           </h1>
 
           <div className="table-responsive">
-            <table className="table table-borderless w-120  mt-4  bg-white ">
+            <table className="table table-borderless w-120  mt-4  bg-white table-hover ">
               <thead>
                 <tr>
                   <th scope="col">Collection </th>

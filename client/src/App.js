@@ -37,12 +37,12 @@ import Collection from "./components/Collection";
 import "./App.css";
 import Collections from "./pages/Collections";
 import Footer from "./components/Footer";
-import ParticlesBg from "particles-bg";
-
-import Particles from "./components/Particles";
 import Trending from "./components/Trending";
 import Volume from "./components/Volume";
 import Sales from "./components/Sales";
+
+// Particles Bg
+import Particles from "./components/Particles";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -105,7 +105,7 @@ function App() {
           }}
         >
           <Particles />
-          {/* <ParticlesBg className='w-25' type="cobweb" bg={true} /> */}
+         
           <ApolloProvider client={client}>
             <Router>
               <Nav />
@@ -124,7 +124,7 @@ function App() {
                   element={Auth.loggedIn() ? <Dashboard /> : <ProtectRoute />}
                 />
               </Routes>
-              <Footer />
+              {/* <Footer /> */}
             </Router>
           </ApolloProvider>
         </RainbowKitProvider>

@@ -7,10 +7,10 @@ import { Link } from 'react-router-dom';
 import Auth from '../utils/auth';
 
 import nft2 from '../images/nft2.json'
-import nft from '../images/nft.json';
+
 import Lottie from 'lottie-react'
 import eth from '../images/eth.json'
-
+import Footer from '../components/Footer'
 
 
 const Landing = () => {
@@ -47,6 +47,9 @@ const Landing = () => {
               <p className="lead my-4">Retrieving NFT metadata from the blockchain is tedious and time-consuming. Our NFT app does the heavy lifting for you across Solana and Ethereum NFTs, making the data you need searchable and accessible.</p>
               <Link to='/collections'>
                 <button type="button" className="btn btn-dark mb-3">Trending NFT Collections  <i className="bi bi-arrow-up-right"></i> </button>
+              </Link>
+              <Link to='/signup' className='text-decoration-none'>
+                <button type="button" className="btn btn-dark mb-3 d-block">Sign up  <i className="bi bi-arrow-up-right"></i> </button>
               </Link>
             </div>
             <div className='col-md-4 '>
@@ -116,14 +119,15 @@ const Landing = () => {
               <h2 className="accordion-header" id="flush-headingOne">
                 <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                   data-bs-target="#question-one">
-                  What is an NFT
+                  What is an NFT?
                 </button>
               </h2>
               <div id="question-one" className="accordion-collapse collapse" aria-labelledby="flush-headingOne"
                 data-bs-parent="#questions">
                 <div className="accordion-body">
-                  A digital currency in which transactions are verified and records maintained by a decentralized system
-                  using cryptography, rather than by a centralized authority.
+                Non-Fungible Tokens are unique, easily verifiable digital assets that can represent items such as GIFs, images, videos, music albums, and more. Anything that exists online can be purchased as an NFT, theoretically. 
+                <br></br>
+                NFTs are different from cryptocurrencies because they’re not interchangeable. Think of Pokémon cards: You can trade them, but a Gastly is not the same as a holographic Charizard. But a bitcoin is indistinguishable from another bitcoin.
                 </div>
               </div>
             </div>
@@ -132,15 +136,15 @@ const Landing = () => {
               <h2 className="accordion-header" id="flush-headingOne">
                 <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                   data-bs-target="#question-two">
-                  What is a blockchain
+                  Why would I want to own an NFT? Can I make money on it?
                 </button>
               </h2>
               <div id="question-two" className="accordion-collapse collapse" aria-labelledby="flush-headingOne"
                 data-bs-parent="#questions">
                 <div className="accordion-body">
-                  A blockchain is a decentralized, distributed and public digital ledger that is used to record transactions
-                  across many computers so that the record cannot be altered retroactively without
-                  the alteration of all subsequent blocks and the consensus of the network.”
+                One reason to buy an NFT is for its emotional value, which isn’t so different from physical objects...unless you’re a total utilitarian. No one buys lip gloss because they need it. They buy it for the way it makes them feel. The same can be true for a GIF, image, video, or other digital asset.
+
+The other reason is because you think it’s valuable...and will only increase in value. And yes, you can make money off of an NFT by buying and reselling it for more.
                 </div>
               </div>
             </div>
@@ -214,7 +218,7 @@ const Landing = () => {
       </section>
 
 
-
+<Footer/>
     </>
   );
 };
