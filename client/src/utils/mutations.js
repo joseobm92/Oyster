@@ -92,3 +92,13 @@ mutation AddCollection($name: String, $symbol: String, $address: String, $supply
   }
 }
 `;
+
+// remove collection from user favorites
+export const REMOVE_COLLECTION = gql`
+mutation RemoveCollection($collectionId: ID!) {
+  removeCollection(collectionId: $collectionId) {
+    _id
+    name
+    address
+  }
+}`;

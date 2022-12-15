@@ -133,7 +133,7 @@ const Collection = () => {
             </li>
           </ul>
           {Auth.loggedIn() ? (
-            <button className='btn btn-dark' onClick={addToFavorites}>Add To Favorites</button>
+            <Link to='/me'> <button className='btn btn-dark' onClick={addToFavorites}>Add To Favorites</button> </Link> 
           ) : (
             <Link to='/login'>
             <button className='btn btn-dark'>Add To Favorites</button>

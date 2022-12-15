@@ -50,6 +50,7 @@ const typeDefs = gql`
       floor: Float,
       avg_price: Float) : Collection
     removeUser: User
+    removeCollection(collectionId: ID!): Collection
   }
 `;
 
