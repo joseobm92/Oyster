@@ -31,13 +31,15 @@ const Collections =  () => {
           <h1>Trending Collections <span className="text-primary"> </span></h1>
 
           <div className="table-responsive">
-            <table className="table table-borderless w-120  mt-4 table-hover ">
+            <table className="table table-borderless w-120  mt-4  bg-white ">
 
               <thead>
                 <tr>
                   
                   <th scope="col">Collection </th>
                   <th scope="col">Floor Price </th>
+                  <th scope="col">Volume </th>
+                  <th scope="col">Sales </th>
                   <th scope="col">Avg Price </th>
                 </tr>
               </thead>
@@ -49,7 +51,9 @@ const Collections =  () => {
                       
                       <Link className="text-decoration-none text-dark" to={`/collections/${collection.node.address}`}> <td> <img className='logo rounded m-2' src={collection.node.unsafeOpenseaImageUrl} alt=''></img>{collection.node.name} ({collection.node.symbol})</td></Link>
                       <td>{collection.node.stats.floor} ETH <br /> <small> - </small></td>
-                      <td>{collection.node.stats.average} ETH <br /> <small> - </small> </td>
+                      <td>{collection.node.stats.volume.toFixed(2)} ETH <br /> <small> - </small> </td>
+                      <td>{collection.node.stats.totalSales} <br /> <small> - </small></td>
+                      <td>{collection.node.stats.average.toFixed(4)} ETH <br /> <small> - </small> </td>
 
                     </tr>
 

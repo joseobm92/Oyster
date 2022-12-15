@@ -11,6 +11,7 @@ import Auth from '../utils/auth'
 const Collection = () => {
   const { address } = useParams();
   //const [name, setName] = useState('');
+  //const [collectionWebsite, setCollectionWebsite] = useState('');
 
   const [addCollection, { error }] = useMutation(ADD_COLLECTION, {
     // update(cache, { data: { addCollection }}) {
@@ -52,9 +53,13 @@ const Collection = () => {
   //
   // console.log(name);
 
-  const collectionWebsite =
-    collection.contract.unsafeOpenseaExternalUrl.toString();
-  const collectionObj = {
+  // if(collection.contract.unsafeOpenseaExternalUrl){
+  //     setCollectionWebsite(collection.contract.unsafeOpenseaExternalUrl.toString());
+  // }
+
+    const collectionWebsite = collection.contract.unsafeOpenseaExternalUrl.toString();
+  
+    const collectionObj = {
     name: collection.contract.name,
     address: address,
     symbol: collection.contract.symbol,
@@ -128,7 +133,7 @@ const Collection = () => {
             </li>
           </ul>
           {Auth.loggedIn() ? (
-            <button className='btn btn-dark' onClick={addToFavorites}>Add To Favorites</button>
+            <Link to='/me'> <button className='btn btn-dark' onClick={addToFavorites}>Add To Favorites</button> </Link> 
           ) : (
             <Link to='/login'>
             <button className='btn btn-dark'>Add To Favorites</button>

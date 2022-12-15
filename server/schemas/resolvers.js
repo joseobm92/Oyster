@@ -69,7 +69,7 @@ const resolvers = {
       return { token, user };
     },
 
-    // Add a collection to a user 
+    // Add a collection to a users favorites
     addCollection: async (parent, { 
       name, symbol, address, supply, website,
       logo, sales, volume, floor, avg_price 
@@ -86,6 +86,26 @@ const resolvers = {
           { $addToSet: { collections: collection._id } }
         );
       return collection;
+      },
+
+      // Remove collection from a users favorites
+      removeCollection: async (parent, { collectionId }, context) => {
+         if (context.user) {
+          console.log(collectionId);
+          const collection = await Collection.findOneAndDelete({
+            _id: collectionId,
+          });
+
+          console.log(collection);
+  
+          await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $pull: { collections: collection._id } }
+          );
+  
+          return collection;
+         }
+        //throw new AuthenticationError('You need to be logged in!');
       },
 
       // Set up mutation so a logged in user can only remove their profile and no one else's

@@ -1,9 +1,10 @@
 import React from 'react';
 import { Navigate, useParams, Link } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 
 
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
+import { REMOVE_COLLECTION } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
@@ -15,6 +16,10 @@ const Profile = () => {
   const { loading, data } = useQuery(userId ? QUERY_USER : QUERY_ME, {
     variables: { userId: userId },
   });
+
+  const [removeCollection, { error }] = useMutation(REMOVE_COLLECTION, {
+    
+  })
 
   console.log(data);
 
@@ -39,6 +44,26 @@ const Profile = () => {
       </h4>
     );
   }
+
+
+
+  const removeFromFavorites = async(id) => {
+    try {
+      console.log('This is in remove from favorites func', id);
+      
+      const { data } = await removeCollection({
+        variables: {
+          collectionId: id
+        }
+      });
+
+      console.log(data);
+
+    } catch (error) {
+      console.error("This is in the remove from favorites", error);
+    }
+
+  };
 
   return (
     <div className='container mt-4'>
@@ -70,6 +95,7 @@ const Profile = () => {
             <td>{favorite.avg_price} ETH <br /> <small> - </small> </td>
             <td>{favorite.supply} <br /> <small> - </small> </td>
             <td>{favorite.volume} ETH <br /> <small> - </small> </td>
+            <td><button onClick={()=>removeFromFavorites(favorite._id)} class="btn rounded delete-btn btn-dark">Delete</button></td> 
           </tr>
 
         </tbody>
