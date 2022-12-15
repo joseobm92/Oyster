@@ -1,84 +1,104 @@
-import React from 'react'
+import React from "react";
 import { useQuery } from "@apollo/client";
-import { QUERY_COLLECTION_FOR_ADDRESS } from '../utils/queries';
+import { QUERY_COLLECTION_FOR_ADDRESS } from "../utils/queries";
 
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useAccount } from "wagmi";
 
-
 const Gallery = () => {
+  const account = useAccount({
+    onConnect({ address, connector, isReconnected }) {
+      console.log("Connected", { address, connector, isReconnected });
+      console.log(address);
+    },
+    onDisconnect() {
+      console.log("disconnected");
+    },
+  });
 
-    const account = useAccount({
-        onConnect({ address, connector, isReconnected}) {
-          console.log('Connected', {address, connector, isReconnected})
-          console.log(address);
-    
-        },
-        onDisconnect() {
-          console.log('disconnected');
-        }
-      });
-    
+  console.log(account.address);
 
-    console.log(account.address);
+  const { loading, error, data } = useQuery(QUERY_COLLECTION_FOR_ADDRESS, {
+    context: { clientName: "endpoint2" },
+    variables: {
+      address: account.address,
+    },
+  });
+  //console.log(data);
+  if (loading) return null;
+  if (error) return `Error! ${error}`;
+  const collections = data.wallet.tokens.edges;
 
-    const { loading, error, data } = useQuery(QUERY_COLLECTION_FOR_ADDRESS, 
-        { 
-        context: { clientName: 'endpoint2' },
-        variables: {
-            address: account.address,
-        }
-        });
-    //console.log(data);
-    if (loading) return null;
-    if (error) return `Error! ${error}`;
-    const collections =  data.wallet.tokens.edges;
-    
-    console.log(collections[0].node.images[1].url)
-    console.log(typeof collections[0].node.images[1].url)
-      
-    // collections.map((collection, index) => (
-    //     collection.node.images[1].url ? collection.node.images[1].url : "https://i.picsum.photos/id/866/200/300.jpg?hmac=rcadCENKh4rD6MAp6V_ma-AyWv641M4iiOpe1RyFHeI"
-    // ))
+  console.log(collections[10].node.images.length);
+  //console.log(typeof collections[11].node.images[1].url);
 
-  return (
-    <div className="container mt-5 mb-5">
-      <div className='row justify-content-center'>
+  // collections.map((collection, index) => (
+  //     collection.node.images[1].url ? collection.node.images[1].url : "https://i.picsum.photos/id/866/200/300.jpg?hmac=rcadCENKh4rD6MAp6V_ma-AyWv641M4iiOpe1RyFHeI"
+  // ))
 
-      {
-        collections.map((collection, index) => (
-            <div key={index} className='col-sm-2'>
-                <div className="card collection">
-                {/* {console.log(collection.node.images[1].url)} */}
-                        {/* <img
-                        src={ collection.node.images[1].url ? collection.node.images[1].url : "https://i.picsum.photos/id/866/200/300.jpg?hmac=rcadCENKh4rD6MAp6V_ma-AyWv641M4iiOpe1RyFHeI"}
-                        className="card-img-top"
-                        alt="nft"
-                        /> */}
+  //   return (
+  //     <div className="container mt-5 mb-5">
+  //       <div className='row justify-content-center'>
 
-
+  collections.map((collection, index) => {
+    if (collection.node.images.length > 0) {
+      console.log(collection.node.images.length);
+      return (
+        <>
+          <div className="container mt-5 mb-5">
+            <div className="row justify-content-center"></div>
+            <div key={index} className="col-sm-2">
+              <div className="card collection">
+                {/* <img
+                  src={collection.node.images[1].url || " "}
+                  className="card-img-top"
+                  alt="nft"
+                /> */}
                 <div className="card-body">
-                <h4 className="card-title">{collection.node.contract.name} #{collection.node.contract.tokenId} </h4>
-          <ul className="list-group list-group-flush">
-            <li className="list-group-item">
-              {collection.node.contract.symbol}
-              
-            </li>
-          </ul>
-        </div>
-      </div>
-      </div>
+                  <h4 className="card-title">
+                    {collection.node.contract.name} #
+                    {collection.node.contract.tokenId}{" "}
+                  </h4>
+                  <ul className="list-group list-group-flush">
+                    <li className="list-group-item">
+                      {collection.node.contract.symbol}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <div key={index} className="col-sm-2">
+            <div className="card collection">
+              <div className="card-body">
+                <h4 className="card-title">
+                  {collection.node.contract.name} #
+                  {collection.node.contract.tokenId}{" "}
+                </h4>
+                <ul className="list-group list-group-flush">
+                  <li className="list-group-item">
+                    {collection.node.contract.symbol}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </>
+      );
+    }
+  });
+};
 
-
-        ))
-        
-        }
-
-      </div>
-    </div>
-  )
+{
+  /* </div>
+    </div> */
 }
+//   )
+// }
 
-
-
-export default Gallery
+export default Gallery;
