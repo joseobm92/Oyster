@@ -44,12 +44,12 @@ const Collections =  () => {
                 </tr>
               </thead>
               {
-                collections.map((collection) => (
-                  <tbody>
+                collections.map((collection, index) => (
+                  <tbody key={index}>
 
                     <tr>
                       
-                      <Link className="text-decoration-none text-dark" to={`/collections/${collection.node.address}`}> <td> <img className='logo rounded m-2' src={collection.node.unsafeOpenseaImageUrl} alt=''></img>{collection.node.name} ({collection.node.symbol})</td></Link>
+                      <td> <Link className="text-decoration-none text-dark" to={`/collections/${collection.node.address}`}> <img className='logo rounded m-2' src={collection.node.unsafeOpenseaImageUrl} alt=''></img>{collection.node.name} ({collection.node.symbol})</Link></td>
                       <td>{collection.node.stats.floor} ETH <br /> <small> - </small></td>
                       <td>{collection.node.stats.volume.toFixed(2)} ETH <br /> <small> - </small> </td>
                       <td>{collection.node.stats.totalSales} <br /> <small> - </small></td>
