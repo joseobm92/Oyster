@@ -197,3 +197,27 @@ query TrendingCollections($first: Int, $orderBy: TrendingCollectionsOrderByEnum,
     }
   }
 }`;
+
+
+// Query nfts for a single wallet address
+export const QUERY_COLLECTION_FOR_ADDRESS = gql`
+query WalletTokens($address: String) {
+  wallet(address: $address) {
+    tokens {
+      edges {
+        node {
+          tokenId
+          contract {
+            ... on ERC721Contract {
+              symbol
+              name
+            }
+          }
+          images {
+            url
+          }
+        }
+      }
+    }
+  }
+}`;

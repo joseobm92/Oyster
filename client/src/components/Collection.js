@@ -58,7 +58,7 @@ const Collection = () => {
   // }
 
 
-    const collectionWebsite = collection.contract.unsafeOpenseaExternalUrl.toString();
+    const collectionWebsite = collection.contract.unsafeOpenseaExternalUrl;
   
     const collectionObj = {
     name: collection.contract.name,
