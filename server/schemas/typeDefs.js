@@ -1,11 +1,11 @@
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type User {
     _id: ID!
     username: String!
     email: String!
-    collections: [Collection] 
+    collections: [Collection]
   }
 
   type Collection {
@@ -35,20 +35,20 @@ const typeDefs = gql`
     me: User
   }
 
-
   type Mutation {
-    login (email: String!, password: String!): Auth
-    signup (username: String!, email: String!, password: String!): Auth
-    addCollection (name: String,
-      symbol: String,
-      address: String,
-      supply: Float,
-      website: String,
-      logo: String,
-      sales: Float,
-      volume: Float,
-      floor: Float,
-      avg_price: Float) : Collection
+    login(email: String!, password: String!): Auth
+    signup(username: String!, email: String!, password: String!): Auth
+    addCollection(
+      name: String
+      symbol: String
+      address: String
+      supply: Float
+      logo: String
+      sales: Float
+      volume: Float
+      floor: Float
+      avg_price: Float
+    ): Collection
     removeUser: User
     removeCollection(collectionId: ID!): Collection
   }

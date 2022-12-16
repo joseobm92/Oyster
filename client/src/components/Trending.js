@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import ethereum from "../images/ethereum.svg";
 import { useQuery } from "@apollo/client";
 import { QUERY_TRENDING_COLLECTIONS } from "../utils/queries";
 
-import loadingImg from '../images/loading.json'
+import loadingImg from "../images/loading.json";
 
 import Auth from "../utils/auth";
 
@@ -23,10 +23,14 @@ const Trending = () => {
       <>
         <Link to="/collections/sales">
           {" "}
-          <button className='btn btn-dark m-2'>Sales <i class="bi bi-arrow-up-right-square"></i></button>
+          <button className="btn btn-dark m-2">
+            Sales <i class="bi bi-arrow-up-right-square"></i>
+          </button>
         </Link>
         <Link to="/collections/volume">
-          <button className='btn btn-dark m-2'>Volume <i class="bi bi-arrow-up-right-square"></i></button>
+          <button className="btn btn-dark m-2">
+            Volume <i class="bi bi-arrow-up-right-square"></i>
+          </button>
         </Link>
         <div className="container">
           {Auth.loggedIn() ? (
@@ -71,20 +75,23 @@ const Trending = () => {
                       </Link>
                     </td>
                     <td>
-                      {collection.node.stats.floor} ETH <br />{" "}
-                      <small> - </small>
+                      {collection.node.stats.floor}{" "}
+                      <img className="eth-logo" src={ethereum} alt="eth-logo" />{" "}
+                      <br /> <small> - </small>
                     </td>
                     <td>
-                      {collection.node.stats.volume.toFixed(2)} ETH <br />{" "}
-                      <small> - </small>{" "}
+                      {collection.node.stats.volume.toFixed(2)}{" "}
+                      <img className="eth-logo" src={ethereum} alt="eth-logo" />{" "}
+                      <br /> <small> - </small>{" "}
                     </td>
                     <td>
                       {collection.node.stats.totalSales} <br />{" "}
                       <small> - </small>
                     </td>
                     <td>
-                      {collection.node.stats.average.toFixed(4)} ETH <br />{" "}
-                      <small> - </small>{" "}
+                      {collection.node.stats.average.toFixed(4)}{" "}
+                      <img className="eth-logo" src={ethereum} alt="eth-logo" />{" "}
+                      <br /> <small> - </small>{" "}
                     </td>
                   </tr>
                 </tbody>

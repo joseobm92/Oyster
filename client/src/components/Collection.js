@@ -1,13 +1,17 @@
 import { React, useState } from "react";
+import ethereum from "../images/ethereum.svg";
 
 import { Navigate, useParams, Link } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 
-import { QUERY_SINGLE_COLLECTION, QUERY_ME } from "../utils/queries";
+import {
+  QUERY_SINGLE_COLLECTION,
+  QUERY_ME,
+  QUERY_COLLECTION_NFTS,
+} from "../utils/queries";
 import { ADD_COLLECTION } from "../utils/mutations";
 
 import Auth from "../utils/auth";
-
 
 const Collection = () => {
   const { address } = useParams();
@@ -37,15 +41,19 @@ const Collection = () => {
   console.log(address);
   console.log(typeof address);
 
-  const { loading, data } = useQuery(QUERY_SINGLE_COLLECTION, {
+  const { loading, data } = useQuery(QUERY_COLLECTION_NFTS, {
     context: { clientName: "endpoint2" },
-    variables: { address: address },
+    variables: {
+      address: address,
+      first: 8,
+    },
   });
 
   // Check if data is returning from the `QUERY_SINGLE_COLLECTION`
   const collection = data || {};
 
   console.log(collection);
+  //console.log(collection.contract.tokens.edges[1].node.images[1].url);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -59,6 +67,7 @@ const Collection = () => {
   // }
 
   const collectionWebsite = collection.contract.unsafeOpenseaExternalUrl;
+  const collectionEtherscan = `https://etherscan.io/address/${collection.contract.address}`;
 
   const collectionObj = {
     name: collection.contract.name,
@@ -117,18 +126,20 @@ const Collection = () => {
                   Circulating Supply: {collection.contract.circulatingSupply}
                 </li>
                 <li className="list-group-item">
-                  Floor: {collection.contract.stats.floor} ETH
+                  Floor: {collection.contract.stats.floor}{" "}
+                  <img className="eth-logo" src={ethereum} alt="eth-logo" />
                 </li>
                 <li className="list-group-item">
                   Sales: {collection.contract.stats.totalSales}
                 </li>
                 <li className="list-group-item">
-                  Volume: {collection.contract.stats.volume}
+                  Volume: {collection.contract.stats.volume}{" "}
+                  <img className="eth-logo" src={ethereum} alt="eth-logo" />
                 </li>
                 <li className="list-group-item">
-                  Avg Price: {collection.contract.stats.average.toFixed(4)}
+                  Avg Price: {collection.contract.stats.average.toFixed(4)}{" "}
+                  <img className="eth-logo" src={ethereum} alt="eth-logo" />
                 </li>
-               
               </ul>
               {Auth.loggedIn() ? (
                 <Link to="/me">
@@ -169,15 +180,60 @@ const Collection = () => {
                   Token Standard: {collection.contract.tokenStandard}
                 </li>
                 <li className="list-group-item">
-                <Link to={`https://etherscan.io/address/${collection.contract.address}`} className='text-decoration-none text-black'>
-                Etherscan Link             
-                </Link>
+                  <a
+                    src={collectionEtherscan}
+                    href={collectionEtherscan}
+                    className="text-decoration-none text-black"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Etherscan Link
+                  </a>
                 </li>
-               
               </ul>
             </div>
           </div>
         </div>
+        {/* CAROUSEL */}
+        {/* <div
+          id="carouselExampleControls"
+          className="carousel slide"
+          data-bs-ride="carousel"
+        >
+          <div className="carousel-inner">
+            <div className="carousel-item active">
+              <img
+                src={collection.contract.tokens.edges[1].node.images[0].url}
+                className="collection"
+                alt="..."
+              />
+            </div>
+          </div>
+          <button
+            className="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev"
+          >
+            <span
+              className="carousel-control-prev-icon"
+              aria-hidden="true"
+            ></span>
+            <span className="visually-hidden">Previous</span>
+          </button>
+          <button
+            className="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleControls"
+            data-bs-slide="next"
+          >
+            <span
+              className="carousel-control-next-icon"
+              aria-hidden="true"
+            ></span>
+            <span className="visually-hidden">Next</span>
+          </button>
+        </div> */}
       </div>
     </div>
   );
