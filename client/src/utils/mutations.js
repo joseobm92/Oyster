@@ -80,7 +80,7 @@ export const ADD_PROJECT = gql`
     $name: String
     $symbol: String
     $address: String
-    $supply: Float
+    $supply: String
     $website: String
     $logo: String
   ) {
