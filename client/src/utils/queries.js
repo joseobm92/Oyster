@@ -18,6 +18,22 @@ export const QUERY_USER = gql`
         volume
         website
       }
+      projects {
+        _id
+        address
+        logo
+        name
+        projectAuthor
+        supply
+        symbol
+        website
+        comments {
+          commentAuthor
+          commentText
+          createdAt
+          _id
+        }
+      }
       email
       username
     }
@@ -160,6 +176,22 @@ export const QUERY_ME = gql`
         volume
         website
       }
+      projects {
+        _id
+        address
+        logo
+        name
+        projectAuthor
+        supply
+        symbol
+        website
+        comments {
+          commentAuthor
+          commentText
+          createdAt
+          _id
+        }
+      }
       email
       username
     }
@@ -277,6 +309,50 @@ export const QUERY_COLLECTION_NFTS = gql`
         }
       }
       address
+    }
+  }
+`;
+
+// QUERY ALL PROJECTS
+export const QUERY_PROJECTS = gql`
+  query Projects {
+    projects {
+      _id
+      address
+      logo
+      name
+      projectAuthor
+      supply
+      symbol
+      website
+      comments {
+        commentAuthor
+        commentText
+        createdAt
+        _id
+      }
+    }
+  }
+`;
+
+// query single project
+export const QUERY_SINGLE_PROJECT = gql`
+  query Projects($projectId: ID) {
+    project(projectId: $projectId) {
+      _id
+      address
+      logo
+      name
+      projectAuthor
+      supply
+      symbol
+      website
+      comments {
+        _id
+        commentAuthor
+        commentText
+        createdAt
+      }
     }
   }
 `;

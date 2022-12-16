@@ -3,6 +3,7 @@ import { Navigate, useParams, Link } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
 import Watchlist from "../components/Watchlist";
 import Gallery from "../components/Gallery";
+import ProjectForm from "../components/ProjectForm";
 
 import loadingImg from "../images/loading.json";
 import Lottie from "lottie-react";
@@ -63,6 +64,7 @@ const Profile = () => {
         Welcome back,<span className="text-primary"> {user.username} </span>{" "}
       </small>
       <Watchlist />
+      <ProjectForm />
       <Gallery />
     </div>
   );

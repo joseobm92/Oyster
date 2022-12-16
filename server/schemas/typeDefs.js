@@ -6,6 +6,7 @@ const typeDefs = gql`
     username: String!
     email: String!
     collections: [Collection]
+    projects: [Project]
   }
 
   type Collection {
@@ -22,6 +23,25 @@ const typeDefs = gql`
     avg_price: Float
   }
 
+  type Project {
+    _id: ID
+    name: String
+    projectAuthor: String
+    symbol: String
+    address: String
+    supply: String
+    website: String
+    logo: String
+    comments: [Comment]
+  }
+
+  type Comment {
+    _id: ID
+    commentText: String
+    commentAuthor: String
+    createdAt: String
+  }
+
   type Auth {
     token: ID!
     user: User
@@ -32,6 +52,8 @@ const typeDefs = gql`
     users: [User]
     collection(collectionId: ID!): Collection
     collections(userId: ID!): [Collection]
+    projects: [Project]
+    project(projectId: ID): Project
     me: User
   }
 
@@ -51,6 +73,17 @@ const typeDefs = gql`
     ): Collection
     removeUser: User
     removeCollection(collectionId: ID!): Collection
+    addProject(
+      name: String
+      symbol: String
+      address: String
+      supply: String
+      website: String
+      logo: String
+    ): Project
+    removeProject(projectId: ID!): Project
+    addComment(projectId: ID!, commentText: String!): Project
+    removeComment(projectId: ID!, commentId: ID!): Project
   }
 `;
 

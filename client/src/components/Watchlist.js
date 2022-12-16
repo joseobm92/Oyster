@@ -107,16 +107,22 @@ const Watchlist = () => {
                   </Link>
                 </td>
                 <td>
-                  {favorite.floor} ETH <br /> <small> - </small>
+                  {favorite.floor.toFixed(4)}{" "}
+                  <img className="eth-logo" src={ethereum} alt="eth-logo" />{" "}
+                  <br /> <small> - </small>
                 </td>
                 <td>
-                  {favorite.avg_price} ETH <br /> <small> - </small>{" "}
+                  {favorite.avg_price.toFixed(4)}{" "}
+                  <img className="eth-logo" src={ethereum} alt="eth-logo" />{" "}
+                  <br /> <small> - </small>{" "}
                 </td>
                 <td>
                   {favorite.supply} <br /> <small> - </small>{" "}
                 </td>
                 <td>
-                  {favorite.volume} ETH <br /> <small> - </small>{" "}
+                  {favorite.volume.toFixed(2)}{" "}
+                  <img className="eth-logo" src={ethereum} alt="eth-logo" />{" "}
+                  <br /> <small> - </small>{" "}
                 </td>
                 <td>
                   <button
