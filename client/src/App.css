@@ -15,9 +15,18 @@
 .showcase {
     font-size: 60px;
 }
+
+.lead.my-4{ 
+    background-color: rgb(250, 250, 250, .2);
+}
+
 .mx-3 {
     font-family: "Audiowide";
   }
+
+.table {
+    background-color: rgb(250, 250, 250, .8);
+}
 
 .collection {
     width: 350px;

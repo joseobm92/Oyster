@@ -47,9 +47,8 @@ const Footer = () => {
           <div className="col-md-4">
             <h5>Company</h5>
             <ul className="list-unstyled text-decoration-none">
-              <Link to="" className="text-decoration-none text-white text-muted">
-                <li> Contact us</li>
-              </Link>
+            <a href="mailto:email@example.com" className="text-decoration-none text-white text-muted">Contact us</a>
+
               <Link to="" className="text-decoration-none text-muted">
                 <li> Roadmap</li>
               </Link>
@@ -62,9 +61,7 @@ const Footer = () => {
               <Link to="" className="text-decoration-none text-muted">
                 <li> FAQ </li>
               </Link>
-              <Link to="" className="text-decoration-none text-muted">
-                <li> Pricing</li>
-              </Link>
+              <a href="mailto:email@example.com" className="text-decoration-none text-white text-muted">Pricing</a>
             </ul>
           </div>
         </div>

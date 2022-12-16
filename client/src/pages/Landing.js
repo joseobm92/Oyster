@@ -69,10 +69,10 @@ const Landing = () => {
           <div className='col-md-4 align-self-center'>
           <Lottie loop={true} animationData={eth} />
           </div>
-          <div className='col-md-8 border rounded p-4'>
+          <div className='col-md-8'>
           <h1>Top Sales in the past hour <span className="text-primary"> </span></h1>
           <div className="table-responsive">
-            <table className="table table-borderless w-120  mt-4 table-hover bg-white ">
+            <table className="table table-borderless w-120  mt-4 table-hover">
 
               <thead>
                 <tr>
