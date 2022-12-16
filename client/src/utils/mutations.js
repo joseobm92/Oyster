@@ -13,56 +13,6 @@ export const ADD_USER = gql`
   }
 `;
 
-// export const ADD_COURSE = gql`
-//   mutation addCourse($courseName: String!, $startDate: String!, $endDate: String!, $description: String!) {
-//   addCourse(courseName: $courseName, startDate: $startDate, endDate: $endDate, description: $description) {
-//     _id
-//     courseName
-//     startDate
-//     endDate
-//     description
-//     instructor
-//   }
-// }
-// `;
-
-// export const ADD_STUDENT = gql`
-//   mutation addStudent($firstName: String!, $lastName: String!, $course: String!) {
-//   addStudent(firstName: $firstName, lastName: $lastName, course: $course) {
-//     _id
-//     firstName
-//     lastName
-//     course
-//   }
-// }
-// `;
-
-// export const ADD_ASSIGNMENT = gql`
-//   mutation addAssignment($assignmentName: String!, $grade: Float, $studentId: String) {
-//   addAssignment(assignmentName: $assignmentName, grade: $grade, studentId: $studentId) {
-//     assignmentName
-//     grade
-//   }
-// }
-// `;
-
-// export const UPDATE_ASSIGNMENT = gql`
-//   mutation updateAssignment($assignmentId: String!, $newGrade: Float) {
-//   updateAssignment(assignmentId: $assignmentId, newGrade: $newGrade) {
-//     assignmentName
-//     grade
-//   }
-// }
-// `;
-
-// export const DELETE_ASSIGNMENT = gql`
-//   mutation deleteAssignment($assignmentId: String!, $studentId: String) {
-//   deleteAssignment(assignmentId: $assignmentId, studentId: $studentId) {
-//     course
-//   }
-// }
-// `;
-
 export const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
@@ -120,6 +70,109 @@ export const REMOVE_COLLECTION = gql`
       _id
       name
       address
+    }
+  }
+`;
+
+// add a project
+export const ADD_PROJECT = gql`
+  mutation AddProject(
+    $name: String
+    $symbol: String
+    $address: String
+    $supply: Float
+    $website: String
+    $logo: String
+  ) {
+    addProject(
+      name: $name
+      symbol: $symbol
+      address: $address
+      supply: $supply
+      website: $website
+      logo: $logo
+    ) {
+      _id
+      address
+      logo
+      name
+      projectAuthor
+      supply
+      symbol
+      website
+      comments {
+        commentAuthor
+        commentText
+        createdAt
+        _id
+      }
+    }
+  }
+`;
+
+// remove a project
+export const REMOVE_PROJECT = gql`
+  mutation RemoveProject($projectId: ID!) {
+    removeProject(projectId: $projectId) {
+      _id
+      address
+      logo
+      name
+      projectAuthor
+      supply
+      symbol
+      website
+      comments {
+        createdAt
+        commentText
+        commentAuthor
+        _id
+      }
+    }
+  }
+`;
+
+// Add a comment to a project
+
+export const ADD_COMMENT = gql`
+  mutation AddComment($projectId: ID!, $commentText: String!) {
+    addComment(projectId: $projectId, commentText: $commentText) {
+      _id
+      address
+      comments {
+        _id
+        commentAuthor
+        commentText
+        createdAt
+      }
+      logo
+      name
+      projectAuthor
+      supply
+      symbol
+      website
+    }
+  }
+`;
+
+// Remove a comment from a project
+export const REMOVE_COMMENT = gql`
+  mutation RemoveComment($projectId: ID!, $commentId: ID!) {
+    removeComment(projectId: $projectId, commentId: $commentId) {
+      _id
+      address
+      logo
+      name
+      projectAuthor
+      supply
+      symbol
+      website
+      comments {
+        _id
+        commentAuthor
+        commentText
+        createdAt
+      }
     }
   }
 `;
