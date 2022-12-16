@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useEffect } from "react";
 import { Navigate, useParams, Link } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
 import Watchlist from "../components/Watchlist";
@@ -26,6 +26,10 @@ const Profile = () => {
 
   const user = data?.me || data?.user || {};
   console.log(user);
+
+  useEffect(() => {
+    console.log("test");
+  }, [data]);
   //  navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getUser().data._id === userId) {
     return <Navigate to="/me" />;

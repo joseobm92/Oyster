@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_COLLECTIONS_WITH_VARS } from "../utils/queries";
 import Auth from "../utils/auth";
+import ethereum from "../images/ethereum.svg";
 
 const Volume = () => {
   const { loading, error, data } = useQuery(QUERY_COLLECTIONS_WITH_VARS, {
@@ -26,10 +27,14 @@ const Volume = () => {
       <>
         <Link to="/collections/trending">
           {" "}
-          <button className='btn btn-dark m-2'>Trending <i class="bi bi-arrow-up-right-square"></i></button>
+          <button className="btn btn-dark m-2">
+            Trending <i class="bi bi-arrow-up-right-square"></i>
+          </button>
         </Link>
         <Link to="/collections/sales">
-          <button className='btn btn-dark m-2'>Sales <i class="bi bi-arrow-up-right-square"></i></button>
+          <button className="btn btn-dark m-2">
+            Sales <i class="bi bi-arrow-up-right-square"></i>
+          </button>
         </Link>
         <div className="container">
           {Auth.loggedIn() ? (
@@ -41,7 +46,7 @@ const Volume = () => {
             <p> </p>
           )}
           <h1>
-            Trending By <span className="text-primary">Volume  </span>
+            Trending By <span className="text-primary">Volume </span>
           </h1>
 
           <div className="table-responsive">
@@ -74,20 +79,23 @@ const Volume = () => {
                       </Link>
                     </td>
                     <td>
-                      {collection.node.stats.floor} ETH <br />{" "}
-                      <small> - </small>
+                      {collection.node.stats.floor}{" "}
+                      <img className="eth-logo" src={ethereum} alt="eth-logo" />{" "}
+                      <br /> <small> - </small>
                     </td>
                     <td>
-                      {collection.node.stats.volume.toFixed(2)} ETH <br />{" "}
-                      <small> - </small>{" "}
+                      {collection.node.stats.volume.toFixed(2)}{" "}
+                      <img className="eth-logo" src={ethereum} alt="eth-logo" />{" "}
+                      <br /> <small> - </small>{" "}
                     </td>
                     <td>
                       {collection.node.stats.totalSales} <br />{" "}
                       <small> - </small>
                     </td>
                     <td>
-                      {collection.node.stats.average.toFixed(4)} ETH <br />{" "}
-                      <small> - </small>{" "}
+                      {collection.node.stats.average.toFixed(4)}{" "}
+                      <img className="eth-logo" src={ethereum} alt="eth-logo" />{" "}
+                      <br /> <small> - </small>{" "}
                     </td>
                   </tr>
                 </tbody>
