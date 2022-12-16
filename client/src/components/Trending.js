@@ -38,11 +38,11 @@ const Trending = () => {
             <p> </p>
           )}
           <h1>
-            Trending Collections <span className="text-primary"> </span>
+            Trending Collections <span className="text-black"> </span>
           </h1>
 
           <div className="table-responsive">
-            <table className="table table-borderless w-120  mt-4  bg-white table-hover ">
+            <table className="table table-borderless w-120 mt-4 table-hover ">
               <thead>
                 <tr>
                   <th scope="col">Collection </th>
