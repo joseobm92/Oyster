@@ -51,6 +51,14 @@ const Watchlist = () => {
         variables: {
           collectionId: id,
         },
+        refetchQueries: [
+          {
+            query: QUERY_ME,
+            // variables: {
+            //   courseId: courseId,
+            // }
+          },
+        ],
       });
 
       console.log(data);

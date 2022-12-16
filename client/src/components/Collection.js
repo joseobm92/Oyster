@@ -101,6 +101,14 @@ const Collection = () => {
           volume: collectionObj.volume,
           website: collectionObj.website,
         },
+        refetchQueries: [
+          {
+            query: QUERY_ME,
+            // variables: {
+            //   courseId: courseId,
+            // }
+          },
+        ],
       });
 
       console.log(data);
