@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { useQuery } from "@apollo/client";
@@ -14,6 +14,8 @@ import Footer from "../components/Footer";
 import ethereum from "../images/ethereum.svg";
 
 const Landing = () => {
+  const [nftCollections, getNftCollections] = useState("");
+
   const { loading, error, data } = useQuery(QUERY_TRENDING_WITH_LOGS, {
     context: { clientName: "endpoint2" },
     variables: {
@@ -24,12 +26,21 @@ const Landing = () => {
     },
   });
 
-  if (loading) return null;
+  // useEffect(() => {
+  //   const collectionData = data?.trendingCollections.edges || [];
+  //   getNftCollections(collectionData);
+  //   console.log(nftCollections);
+  // });
+
+  if (loading) {
+    return <p>loading</p>;
+  } else {
+  }
   if (error) return `Error! ${error}`;
 
   const collections = data.trendingCollections.edges;
 
-  console.log(collections);
+  // console.log(collections);
 
   return (
     <>
