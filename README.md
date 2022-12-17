@@ -80,7 +80,11 @@ Looking to connect? Users can join our Oyster community to discuss and share pro
 * Don't forget to click `sign up` and log in to explore all Oyster has to offer. 
 * If you don't have a wallet, Oyster will easily guide you through the process by selecting `Connect Wallet`
 
+<br />
 
+## Demo
+
+<img src="./Assets/demo.gif" alt="demo" style="width: 600px; height: 400px;" width="600" height="400"/> 
 
 <br />
 
