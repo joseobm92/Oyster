@@ -37,3 +37,20 @@
 Fresh-off-the-blockchain NFT market insights, with custom portfolios and galleries. 
 
 ---
+
+<br />
+
+<div align="center">
+
+[ABOUT](#-about) • 
+[INSTALLATION](#installation) • 
+[USE](#use) • 
+[DEMO](#demo) • 
+[TECH STACK](#tech-stack) •
+[MEET THE DEVELOPERS](#meet-the-developers) • 
+[CONTACT US](#contact-us) 
+
+
+</div>
+
+<br />
