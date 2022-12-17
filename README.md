@@ -54,3 +54,14 @@ Fresh-off-the-blockchain NFT market insights, with custom portfolios and galleri
 </div>
 
 <br />
+## About
+
+Oyster is an exciting new way for NFT collectors and creators to explore the digitable collectables market. With Oyster, users can view real-time NFT metadata from the blockchain. 
+
+To unlock even more features, users can sign up and create a watch list of their favorite NFTs. Users can also connect their wallet and view their own NFT gallery.
+
+Looking to connect? Users can join our Oyster community to discuss and share projects with other collectors and artists. 
+
+ Our application uses the MERN stack with GraphQL, Apollo Server, and Apollo Client. Please see our [tech stack](#tech-stack) below for an expanded list of technologies used.  
+
+<br />
