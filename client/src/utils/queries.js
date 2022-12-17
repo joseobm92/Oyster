@@ -27,6 +27,7 @@ export const QUERY_USER = gql`
         supply
         symbol
         website
+        createdAt
         comments {
           commentAuthor
           commentText
@@ -185,6 +186,7 @@ export const QUERY_ME = gql`
         supply
         symbol
         website
+        createdAt
         comments {
           commentAuthor
           commentText
@@ -325,6 +327,7 @@ export const QUERY_PROJECTS = gql`
       supply
       symbol
       website
+      createdAt
       comments {
         commentAuthor
         commentText
@@ -347,6 +350,7 @@ export const QUERY_SINGLE_PROJECT = gql`
       supply
       symbol
       website
+      createdAt
       comments {
         _id
         commentAuthor

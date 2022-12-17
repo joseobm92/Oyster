@@ -5,9 +5,9 @@ import logo from "../images/logo.png";
 import Auth from "../utils/auth";
 
 import { useQuery } from "@apollo/client";
-import { QUERY_COLLECTION_FOR_ADDRESS } from '../utils/queries';
+import { QUERY_COLLECTION_FOR_ADDRESS } from "../utils/queries";
 
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useAccount } from "wagmi";
 
 const Nav = () => {
@@ -30,8 +30,8 @@ const Nav = () => {
   // if(account.address) {
   //   console.log(account.address);
 
-  //   const { loading, error, data } = useQuery(QUERY_COLLECTION_FOR_ADDRESS, 
-  //     { 
+  //   const { loading, error, data } = useQuery(QUERY_COLLECTION_FOR_ADDRESS,
+  //     {
   //       context: { clientName: 'endpoint2' },
   //       variables: {
   //         address: account.address,
@@ -41,17 +41,12 @@ const Nav = () => {
   //   if (loading) return null;
   //   if (error) return `Error! ${error}`;
   //   const collections =  data.wallet.tokens.edges;
-  
+
   //   console.log(collections)
   // }
 
-
-
-
-
   return (
     <div>
-    
       <nav
         className="navbar bg-black navbar-expand-lg py-3 border-bottom"
         id="navStyling"
@@ -76,24 +71,47 @@ const Nav = () => {
                 <ConnectButton showBalance={false} />
               </li> */}
               <li className="nav-item dropdown ">
-          <a className="nav-link dropdown-toggle text-white"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Products
-          </a>
-          <ul className="dropdown-menu">
-            <Link to='/collections/trending' className='text-decoration-none'>
-
-            <li><a className="dropdown-item" >Trending</a></li>
-            </Link>
-            <Link to='/collections/volume' className='text-decoration-none'>
-            
-            <li><a className="dropdown-item" >By Volume</a></li>
-            </Link>
-            <Link to='/collections/sales' className='text-decoration-none'>
-            
-            <li><a className="dropdown-item" >By Sales</a></li>
-            </Link>
-          </ul>
-        </li>
+                <a
+                  className="nav-link dropdown-toggle text-white"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Products
+                </a>
+                <ul className="dropdown-menu">
+                  <Link
+                    to="/collections/trending"
+                    className="text-decoration-none"
+                  >
+                    <li>
+                      <a className="dropdown-item">Trending</a>
+                    </li>
+                  </Link>
+                  <Link
+                    to="/collections/volume"
+                    className="text-decoration-none"
+                  >
+                    <li>
+                      <a className="dropdown-item">By Volume</a>
+                    </li>
+                  </Link>
+                  <Link
+                    to="/collections/sales"
+                    className="text-decoration-none"
+                  >
+                    <li>
+                      <a className="dropdown-item">By Sales</a>
+                    </li>
+                  </Link>
+                </ul>
+              </li>
+              <li className="nav-item">
+                {" "}
+                <Link to="/projects" className="nav-link text-white">
+                  View Projects
+                </Link>
+              </li>
               {/* <li className="nav-item">
                 <Link to="/collections" className="nav-link text-white">
                   Trending 
@@ -103,7 +121,7 @@ const Nav = () => {
                 <>
                   <li className="nav-item">
                     <Link to="/me" className="nav-link text-white">
-                      Dashboard 
+                      Dashboard
                     </Link>
                   </li>
                   <Link to="/" className="nav-link text-white ">
@@ -131,9 +149,8 @@ const Nav = () => {
           </div>
         </div>
       </nav>
-      <div className='container m-2'>
-
-      <ConnectButton showBalance={false} />
+      <div className="container m-2">
+        <ConnectButton showBalance={false} />
       </div>
     </div>
   );
