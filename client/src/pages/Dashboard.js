@@ -1,4 +1,4 @@
-import { React, useEffect } from "react";
+import { React, useEffect, useState } from "react";
 import { Navigate, useParams, Link } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
 import Watchlist from "../components/Watchlist";
@@ -14,6 +14,10 @@ import Auth from "../utils/auth";
 
 const Profile = () => {
   const { userId } = useParams();
+
+  const [isProjectFormShown, setIsProjectFormShown] = useState(false);
+  const [isNftShown, setIsNftShown] = useState(false);
+  const [isProjectListShown, setIsProjectListShown] = useState(false);
 
   console.log(userId);
 
@@ -35,6 +39,18 @@ const Profile = () => {
   if (Auth.loggedIn() && Auth.getUser().data._id === userId) {
     return <Navigate to="/me" />;
   }
+
+  const addProjectHandleClick = () => {
+    setIsProjectFormShown((current) => !current);
+  };
+
+  const viewNFTsHandleClick = () => {
+    setIsNftShown((current) => !current);
+  };
+
+  const viewProjectListHandleClick = () => {
+    setIsProjectListShown((current) => !current);
+  };
 
   if (loading) {
     return (
@@ -64,9 +80,18 @@ const Profile = () => {
         Welcome back,<span className="text-primary"> {user.username} </span>{" "}
       </small>
       <Watchlist />
-      <ProjectForm />
-      <ProjectList/>
-      <Gallery />
+      <button onClick={addProjectHandleClick} className="btn btn-dark m-2">
+        Add Project
+      </button>
+      <button onClick={viewNFTsHandleClick} className="btn btn-dark m-2">
+        View Your NFTs
+      </button>
+      <button onClick={viewProjectListHandleClick} className="btn btn-dark m-2">
+        View Your Projects
+      </button>
+      {isProjectFormShown && <ProjectForm />}
+      {isProjectListShown && <ProjectList />}
+      {isNftShown && <Gallery />}
     </div>
   );
 };
