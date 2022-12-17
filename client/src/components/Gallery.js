@@ -25,11 +25,20 @@ const Gallery = () => {
   //console.log(account.address);
 
   return (
-    <div className="container mt-5 mb-5">
+    <div className="container  mt-5 mb-5">
       <h1>My NFTs</h1>
-      <div className="row justify-content-center">
+      <div className="row d-flex justify-content-center">
         {nfts.map((nft, index) => {
           let url;
+          const imageUrl = nft.normalized_metadata.image;
+          const type = typeof imageUrl;
+          if (type === "string" && imageUrl.charAt(0) === "h") {
+            url = imageUrl;
+          } else {
+            url = placeholder;
+          }
+          {
+            /* let url;
           const imageUrl = nft.normalized_metadata.image;
           let firstLetter;
           if (imageUrl === null) {
@@ -43,18 +52,17 @@ const Gallery = () => {
             url = imageUrl;
           } else {
             url = imageUrl;
+          } */
           }
           return (
-            <div key={index} className="col-md-4">
-              <div className="card">
-                <img src={url} className="card-img-top" alt="nft" />
-                <div className="card-body">
-                  <h4 className="card-title">
+            <div key={index} className="col-3">
+              <div className="card m-2">
+                <img src={url} className="card-img-top custom-img" alt="nft" />
+                <div className="card-body custom-body ">
+                  <h5 className="card-title p-0 m-0">
                     {nft.normalized_metadata.name}{" "}
-                  </h4>
-                  <ul className="list-group list-group-flush">
-                    <li className="list-group-item">{nft.symbol}</li>
-                  </ul>
+                  </h5>
+                  <p className="card-text p-0 m-0">{nft.symbol}</p>
                 </div>
               </div>
             </div>
