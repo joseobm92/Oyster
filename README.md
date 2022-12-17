@@ -73,3 +73,14 @@ Looking to connect? Users can join our Oyster community to discuss and share pro
 * `npm i`
 * `npm run develop`
 
+## Use
+
+* To use, Oyster, simply visit our [website](). 
+* To view NFT collections, navigate to the `Products` button, and select how you would like to sort the collections. 
+* Don't forget to click `sign up` and log in to explore all Oyster has to offer. 
+* If you don't have a wallet, Oyster will easily guide you through the process by selecting `Connect Wallet`
+
+
+
+<br />
+
