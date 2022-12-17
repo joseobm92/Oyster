@@ -88,3 +88,35 @@ Looking to connect? Users can join our Oyster community to discuss and share pro
 
 <br />
 
+
+## Tech Stack
+
+### MERN Stack 
+<a href="https://www.mongodb.com/" target=""><img src="./Assets/Techstack/mongodb-icon.svg" alt="MongoDB" style="width: 60px; height: 60px;" width="60" height="60"/> 
+<a href="https://expressjs.com/" target=""><img src="./Assets/Techstack/expressjs.svg" alt="Express" style="width: 60px; height: 60px;" width="60" height="60"/>
+<a href="https://reactjs.org/" target=""><img src="./Assets/Techstack/react.svg" alt="React" style="width: 60px; height: 60px;" width="60" height="60"/>
+<a href="https://nodejs.org/" target=""><img src="./Assets/Techstack/nodejs-icon.svg" alt="Node" style="width: 60px; height: 60px;" width="60" height="60"/></a>
+
+<br  />
+
+### Additional Technologies
+<a href="https://axios-http.com/" target=""><img src="./Assets/Techstack/axios.svg" alt="axios" style="width: 60px; height: 60px;" width="60" height="60"/>
+<a href="https://www.apollographql.com/" target=""><img src="./Assets/Techstack/apollostack.svg" alt="Apollo" style="width: 60px; height: 60px;" width="60" height="60"/>
+<a href="https://graphql.org/" target=""><img src="./Assets/Techstack/graphql.svg" alt="GraphQL" style="width: 60px; height: 60px;" width="60" height="60"/>
+<a href="https://www.npmjs.com/" target=""><img src="./Assets/Techstack/npm-icon.svg" alt="npm" style="width: 60px; height: 60px;" width="60" height="60"/>
+<a href="https://lottiefiles.github.io/lottie-docs/" target=""><img src="./Assets/Techstack/lottie-logo.png" alt="bootstrap" style="width: 60px; height: 60px;" width="60" height="60"/></a>
+<a href="https://getbootstrap.com/" target=""><img src="./Assets/Techstack/bootstrap.svg" alt="bootstrap" style="width: 60px; height: 60px;" width="60" height="60"/></a>
+
+<br  />
+
+### Web3 Technologies
+<a href="https://moralis.io/" target=""><img src="./Assets/Techstack/moralis.png" alt="moralis" style="width: 60px; height: 60px;" width="60" height="60"/>
+<a href="https://metamask.io/" target=""><img src="./Assets/Techstack/metamask-icon.svg" alt="metamask" style="width: 60px; height: 60px;" width="60" height="60"/>
+<a href="https://www.rainbowkit.com/" target=""><img src="./Assets/Techstack/rainbow.png" alt="rainbow" style="width: 60px; height: 60px;" width="60" height="60"/>
+<a href="https://wagmi.sh/" target=""><img src="./Assets/Techstack/wagmi.png" alt="wagmi" style="width: 60px; height: 60px;" width="60" height="60"/></a>
+
+
+
+
+<br />
+
