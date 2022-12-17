@@ -4,7 +4,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import Watchlist from "../components/Watchlist";
 import Gallery from "../components/Gallery";
 import ProjectForm from "../components/ProjectForm";
-
+import ProjectList from "../components/ProjectList";
 import loadingImg from "../images/loading.json";
 import Lottie from "lottie-react";
 
@@ -65,6 +65,7 @@ const Profile = () => {
       </small>
       <Watchlist />
       <ProjectForm />
+      <ProjectList/>
       <Gallery />
     </div>
   );
