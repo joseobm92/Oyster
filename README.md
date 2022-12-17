@@ -65,3 +65,11 @@ Looking to connect? Users can join our Oyster community to discuss and share pro
  Our application uses the MERN stack with GraphQL, Apollo Server, and Apollo Client. Please see our [tech stack](#tech-stack) below for an expanded list of technologies used.  
 
 <br />
+
+## Installation
+
+* Download or clone the repository. 
+* Open the application using a CLI, 
+* `npm i`
+* `npm run develop`
+
