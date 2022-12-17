@@ -116,7 +116,15 @@ Looking to connect? Users can join our Oyster community to discuss and share pro
 <a href="https://wagmi.sh/" target=""><img src="./Assets/Techstack/wagmi.png" alt="wagmi" style="width: 60px; height: 60px;" width="60" height="60"/></a>
 
 
+<br />
+## Meet the Developers
+<img src="./Assets/Developers/avatar3.png" alt="avatar" style="width: 75px; height: 75px;" width="75" height="75"/></a> <img src="./Assets/Developers/avatar2.png" alt="avatar" style="width: 75px; height: 75px;" width="75" height="75"/></a><img src="./Assets/Developers/avatar1.png" alt="avatar" style="width: 75px; height: 75px;" width="75" height="75"/></a>
+
+Hi there! We are the Serial Coders, grads from the [Univerisity of Central Florida](https://github.com/UCF-Coding-Boot-Camp) who developed Oyster as our final project. We hope you enjoy our application, and invite you to check out our other projects! 
+### [Beth DeCarlo](https://github.com/bethdecarlo)- Front End Developer
+### [Jose Barreto](https://github.com/joseobm92)- Full Stack Developer
+### [Youssef Ojeil ](https://github.com/youssefojeil)- Full Stack Developer
+
 
 
 <br />
-
