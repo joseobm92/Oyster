@@ -128,3 +128,9 @@ Hi there! We are the Serial Coders, grads from the [Univerisity of Central Flori
 
 
 <br />
+
+## Contact Us
+
+We love hearing from users and developers! Please reach out to [our team](mailto:bethdecarlo@gmail.com,joseobm92@gmail.com) if you have any questions or comments about Oyster. 
+
+<br />
