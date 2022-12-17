@@ -30,3 +30,10 @@
   
   
 </div>
+---
+
+## Welcome to Oyster!
+
+Fresh-off-the-blockchain NFT market insights, with custom portfolios and galleries. 
+
+---
