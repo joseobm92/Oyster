@@ -32,6 +32,7 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import SingleProject from "./pages/SingleProject";
 import Collections from "./pages/Collections";
+import Projects from "./pages/Projects";
 
 /// IMPORT COMPONENTS ///
 import ProtectRoute from "./components/ProtectRoute";
@@ -124,7 +125,7 @@ function App() {
                 <Route path="/collections/trending" element={<Trending />} />
                 <Route path="/collections/volume" element={<Volume />} />
                 <Route path="/collections/sales" element={<Sales />} />
-                <Route path="/projects" element={<ProjectList />} />
+                <Route path="/projects" element={<Projects />} />
                 <Route
                   path="/projects/:projectId"
                   element={<SingleProject />}

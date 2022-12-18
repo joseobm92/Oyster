@@ -9,6 +9,9 @@ const Projects = () => {
   const { loading, data } = useQuery(QUERY_PROJECTS);
   console.log(data);
   const projects = data?.projects || [];
+  console.log(projects);
+
+  if (loading) return "Loading...";
 
   if (!projects.length) {
     return <h3>No projects Yet</h3>;
@@ -16,7 +19,7 @@ const Projects = () => {
 
   return (
     <div className="container">
-      <ProjectList />
+      <ProjectList projects={projects} />
     </div>
   );
 };

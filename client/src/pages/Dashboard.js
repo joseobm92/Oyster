@@ -90,7 +90,7 @@ const Profile = () => {
         View Your Projects
       </button>
       {isProjectFormShown && <ProjectForm />}
-      {isProjectListShown && <ProjectList />}
+      {isProjectListShown && <ProjectList projects={user.projects} />}
       {isNftShown && <Gallery />}
     </div>
   );

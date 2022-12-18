@@ -26,7 +26,7 @@ const SingleProject = () => {
   return (
     <div className="container">
       <div className="card mb-3">
-        <h4 className="card-header bg-primary text-light p-2 m-0">
+        <h4 className="card-header custom-color text-light p-2 m-0">
           <Link className="text-light" to={`/user/${project._id}`}>
             {project.projectAuthor} <br />
             <span style={{ fontSize: "1rem" }}>
@@ -35,14 +35,19 @@ const SingleProject = () => {
           </Link>
         </h4>
         <div className="card-body bg-light p-2">
-          <p>{project.name}</p>
-          <p>{project.symbol}</p>
-          <p>{project.supply}</p>
-          <p>{project.website}</p>
-          <p>{project.symbol}</p>
+          <p>Project Name: {project.name}</p>
+          <p>Project Symbol: {project.symbol}</p>
+          <p>Total Supply: {project.supply}</p>
+          <p>
+            Website:{" "}
+            <a src={project.website} href="website">
+              {project.website}
+            </a>
+          </p>
+          <p>Address: {project.address}</p>
         </div>
         <Link
-          className="btn btn-primary btn-block btn-squared"
+          className="btn custom-color btn-block btn-squared"
           to={`/projects/${project._id}`}
         >
           Join the discussion on this project.
