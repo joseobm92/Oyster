@@ -1,41 +1,82 @@
 import { gql } from "@apollo/client";
 
 // Query single user
+// export const QUERY_USER = gql`
+//   query Query($userId: ID!) {
+//     user(userId: $userId) {
+//       _id
+//       collections {
+//         address
+//         name
+//         _id
+//         floor
+//         avg_price
+//         logo
+//         sales
+//         supply
+//         symbol
+//         volume
+//         website
+//       }
+//       projects {
+//         _id
+//         address
+//         logo
+//         name
+//         projectAuthor
+//         supply
+//         symbol
+//         website
+//         createdAt
+//         comments {
+//           commentAuthor
+//           commentText
+//           createdAt
+//           _id
+//         }
+//       }
+//       email
+//       username
+//     }
+//   }
+// `;
+
 export const QUERY_USER = gql`
-  query Query($userId: ID!) {
+  query User($userId: ID!) {
     user(userId: $userId) {
+      username
+      email
       _id
-      collections {
-        address
-        name
-        _id
-        floor
-        avg_price
-        logo
-        sales
+      projects {
+        website
+        symbol
         supply
+        projectAuthor
+        name
+        logo
+        createdAt
+        address
+        _id
+        comments {
+          createdAt
+          commentText
+          commentAuthor
+          _id
+        }
+      }
+      collections {
+        _id
+        address
+        avg_price
+        floor
+        logo
+        name
+        supply
+        sales
         symbol
         volume
         website
       }
-      projects {
-        _id
-        address
-        logo
-        name
-        projectAuthor
-        supply
-        symbol
-        website
-        comments {
-          commentAuthor
-          commentText
-          createdAt
-          _id
-        }
-      }
-      email
-      username
     }
   }
 `;
@@ -158,27 +199,57 @@ export const QUERY_SINGLE_COLLECTION_LOG = gql`
   }
 `;
 
-// query logged in user
+// // query logged in user
+// export const QUERY_ME = gql`
+//   query Query {
+//     me {
+//       _id
+//       collections {
+//         _id
+//         address
+//         floor
+//         logo
+//         avg_price
+//         name
+//         sales
+//         supply
+//         symbol
+//         volume
+//         website
+//       }
+//       projects {
+//         _id
+//         address
+//         logo
+//         name
+//         projectAuthor
+//         supply
+//         symbol
+//         website
+//         createdAt
+//         comments {
+//           commentAuthor
+//           commentText
+//           createdAt
+//           _id
+//         }
+//       }
+//       email
+//       username
+//     }
+//   }
+// `;
+
 export const QUERY_ME = gql`
-  query Query {
+  query Me {
     me {
       _id
-      collections {
-        _id
-        address
-        floor
-        logo
-        avg_price
-        name
-        sales
-        supply
-        symbol
-        volume
-        website
-      }
+      email
+      username
       projects {
         _id
         address
+        createdAt
         logo
         name
         projectAuthor
@@ -186,14 +257,25 @@ export const QUERY_ME = gql`
         symbol
         website
         comments {
-          commentAuthor
-          commentText
           createdAt
+          commentText
+          commentAuthor
           _id
         }
       }
-      email
-      username
+      collections {
+        _id
+        address
+        avg_price
+        floor
+        logo
+        name
+        sales
+        supply
+        volume
+        symbol
+        website
+      }
     }
   }
 `;
@@ -325,6 +407,7 @@ export const QUERY_PROJECTS = gql`
       supply
       symbol
       website
+      createdAt
       comments {
         commentAuthor
         commentText
@@ -347,6 +430,7 @@ export const QUERY_SINGLE_PROJECT = gql`
       supply
       symbol
       website
+      createdAt
       comments {
         _id
         commentAuthor

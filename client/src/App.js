@@ -30,12 +30,17 @@ import Landing from "./pages/Landing";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import SingleProject from "./pages/SingleProject";
+import Collections from "./pages/Collections";
+import Projects from "./pages/Projects";
+
 /// IMPORT COMPONENTS ///
 import ProtectRoute from "./components/ProtectRoute";
 import Nav from "./components/Nav";
 import Collection from "./components/Collection";
 import "./App.css";
-import Collections from "./pages/Collections";
+
+import ProjectList from "./components/ProjectList";
 import Footer from "./components/Footer";
 import Trending from "./components/Trending";
 import Volume from "./components/Volume";
@@ -105,7 +110,7 @@ function App() {
           }}
         >
           <Particles />
-         
+
           <ApolloProvider client={client}>
             <Router>
               <Nav />
@@ -115,10 +120,16 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/me" element={<Dashboard />} />
                 <Route path="/collections" element={<Collections />} />
+
                 <Route path="/collections/:address" element={<Collection />} />
                 <Route path="/collections/trending" element={<Trending />} />
                 <Route path="/collections/volume" element={<Volume />} />
                 <Route path="/collections/sales" element={<Sales />} />
+                <Route path="/projects" element={<Projects />} />
+                <Route
+                  path="/projects/:projectId"
+                  element={<SingleProject />}
+                />
                 <Route
                   path="dashboard/:userId"
                   element={Auth.loggedIn() ? <Dashboard /> : <ProtectRoute />}

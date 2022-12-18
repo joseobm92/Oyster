@@ -37,23 +37,6 @@ const Gallery = () => {
           } else {
             url = placeholder;
           }
-          {
-            /* let url;
-          const imageUrl = nft.normalized_metadata.image;
-          let firstLetter;
-          if (imageUrl === null) {
-            url = placeholder;
-          } else if (typeof imageUrl === String) {
-            firstLetter = imageUrl.charAt(0);
-            console.log(firstLetter);
-            if (firstLetter === "i") {
-              url = placeholder;
-            }
-            url = imageUrl;
-          } else {
-            url = imageUrl;
-          } */
-          }
           return (
             <div key={index} className="col-3">
               <div className="card m-2">

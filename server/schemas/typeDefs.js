@@ -32,6 +32,7 @@ const typeDefs = gql`
     supply: String
     website: String
     logo: String
+    createdAt: String
     comments: [Comment]
   }
 
