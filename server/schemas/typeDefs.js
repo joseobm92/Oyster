@@ -82,6 +82,15 @@ const typeDefs = gql`
       website: String
       logo: String
     ): Project
+    updateProject(
+      name: String
+      symbol: String
+      address: String
+      supply: String
+      website: String
+      logo: String
+      projectId: ID!
+    ): Project
     removeProject(projectId: ID!): Project
     addComment(projectId: ID!, commentText: String!): Project
     removeComment(projectId: ID!, commentId: ID!): Project
