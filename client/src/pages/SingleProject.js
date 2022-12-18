@@ -1,16 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 // Import the `useParams()` hook
 import { useParams, Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
 import CommentList from "../components/CommentList";
 import CommentForm from "../components/CommentForm";
+import UpdateProjectForm from "../components/UpdateProjectForm";
 
 import { QUERY_SINGLE_PROJECT } from "../utils/queries";
 
 const SingleProject = () => {
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
   const { projectId } = useParams();
+  const [isProjectFormShown, setIsProjectFormShown] = useState(false);
 
   const { loading, data } = useQuery(QUERY_SINGLE_PROJECT, {
     // pass URL parameter
@@ -20,9 +22,14 @@ const SingleProject = () => {
   const project = data?.project || {};
 
   console.log(project);
+  console.log(projectId);
   if (loading) {
     return <div>Loading...</div>;
   }
+
+  const addProjectHandleClick = () => {
+    setIsProjectFormShown((current) => !current);
+  };
   return (
     <div className="container">
       <div className="card mb-3">
@@ -46,6 +53,10 @@ const SingleProject = () => {
           </p>
           <p>Address: {project.address}</p>
         </div>
+        <button onClick={addProjectHandleClick} className="btn btn-dark m-2">
+          Update Project
+        </button>
+        {isProjectFormShown && <UpdateProjectForm projectId={projectId} />}
         <Link
           className="btn custom-color btn-block btn-squared"
           to={`/projects/${project._id}`}

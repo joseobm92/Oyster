@@ -176,3 +176,42 @@ export const REMOVE_COMMENT = gql`
     }
   }
 `;
+
+// Update a Project
+export const UPDATE_PROJECT = gql`
+  mutation UpdateProject(
+    $projectId: ID!
+    $logo: String
+    $website: String
+    $supply: String
+    $address: String
+    $symbol: String
+    $name: String
+  ) {
+    updateProject(
+      projectId: $projectId
+      logo: $logo
+      website: $website
+      supply: $supply
+      address: $address
+      symbol: $symbol
+      name: $name
+    ) {
+      _id
+      address
+      logo
+      name
+      projectAuthor
+      supply
+      symbol
+      website
+      createdAt
+      comments {
+        createdAt
+        commentText
+        commentAuthor
+        _id
+      }
+    }
+  }
+`;

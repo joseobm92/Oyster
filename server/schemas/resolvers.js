@@ -142,6 +142,35 @@ const resolvers = {
       //throw new AuthenticationError('You need to be logged in!');
     },
 
+    updateProject: async (
+      parent,
+      { name, symbol, address, supply, logo, website, projectId },
+      context
+    ) => {
+      if (context.user) {
+        const project = await Project.findOneAndUpdate(
+          { _id: projectId },
+          {
+            name,
+            symbol,
+            address,
+            supply,
+            logo,
+            website,
+            projectAuthor: context.user.username,
+          }
+        );
+
+        // await User.findOneAndUpdate(
+        //   { _id: context.user._id },
+        //   { $addToSet: { projects: project._id } }
+        // );
+
+        return project;
+      }
+      //throw new AuthenticationError('You need to be logged in!');
+    },
+
     addComment: async (parent, { projectId, commentText }, context) => {
       if (context.user) {
         return Project.findOneAndUpdate(
