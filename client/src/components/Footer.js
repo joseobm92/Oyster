@@ -40,6 +40,11 @@ const Footer = () => {
                 className="text-decoration-none  text-muted">
                 <li> Watchlist </li>
               </Link>
+              <Link
+                to="/projects"
+                className="text-decoration-none  text-muted">
+                <li> View Projects </li>
+              </Link>
              
             </ul>
           </div>

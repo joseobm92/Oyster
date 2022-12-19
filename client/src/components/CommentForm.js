@@ -41,8 +41,8 @@ const CommentForm = ({ projectId }) => {
   };
 
   return (
-    <div>
-      <h4>Add a comment to this current Project</h4>
+    <div className='container bg-white'>
+      <h4>Add a comment to this current Project...</h4>
 
       {Auth.loggedIn() ? (
         <>
@@ -51,10 +51,27 @@ const CommentForm = ({ projectId }) => {
               characterCount === 280 || error ? "text-danger" : ""
             }`}
           >
-            Character Count: {characterCount}/280
+            Comment length: {characterCount}/280
             {error && <span className="ml-2">{error.message}</span>}
           </p>
-          <form
+
+          <form onSubmit={handleFormSubmit}>
+
+                <div className=" form-floating mb-3 mt-3">
+
+                  <input type="commentText" className="form-control" id="floatingCommentText" name='commentText' placeholder='Add your comment' value={commentText} onChange={handleChange}></input>
+                  <label for="commentText" className="floatingCommentText">Your comment</label>
+                  <div id="projectNameHelp" className="form-text"> </div>
+                </div>
+
+
+                <button className="btn btn-dark py-3" type="submit">
+                Add Comment
+              </button>
+                
+              </form>
+
+          {/* <form
             className="flex-row justify-center justify-space-between-md align-center"
             onSubmit={handleFormSubmit}
           >
@@ -74,7 +91,7 @@ const CommentForm = ({ projectId }) => {
                 Add Comment
               </button>
             </div>
-          </form>
+          </form> */}
         </>
       ) : (
         <p>

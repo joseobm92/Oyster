@@ -78,7 +78,7 @@ const Watchlist = () => {
 <button>My Gallery</button>
 <button onClick={displayWatchlist}>My Watchlist</button> */}
 
-      <div className="table-responsive">
+      <div className="table-responsive bg-white">
         <table className="table table-borderless w-120  mt-4 table-hover ">
           <thead>
             <tr>
@@ -127,7 +127,7 @@ const Watchlist = () => {
                 <td>
                   <button
                     onClick={() => removeFromFavorites(favorite._id)}
-                    class="btn rounded delete-btn btn-dark"
+                    class="btn rounded delete-btn btn-danger"
                   >
                     Delete
                   </button>
