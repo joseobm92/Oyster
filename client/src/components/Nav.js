@@ -77,7 +77,7 @@ const Nav = () => {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Products
+                  Collections
                 </a>
                 <ul className="dropdown-menu">
                   <Link
@@ -109,7 +109,7 @@ const Nav = () => {
               <li className="nav-item">
                 {" "}
                 <Link to="/projects" className="nav-link text-white">
-                  View Projects
+                  Explore Projects
                 </Link>
               </li>
               {/* <li className="nav-item">

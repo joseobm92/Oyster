@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import Auth from "../utils/auth";
+
 import { useMutation, useQuery } from "@apollo/client";
 
 import { QUERY_ME } from "../utils/queries";
@@ -38,10 +40,22 @@ const ProjectList = (projects) => {
   };
 
   return (
-    <div>
+    <div className='container mt-3'>
+       {Auth.loggedIn() ? (
+           <p> </p>
+          
+          ) : (
+            <Link to="/login" className="text-decoration-none">
+                <button type="button" className="btn btn-dark mb-3 d-block">
+                  Share Project <i className="bi bi-arrow-up-right"></i>{" "}
+                </button>
+              </Link>
+          )}
+
+
       {projectList &&
         projectList.map((project) => (
-          <div key={project._id} className="card mb-3">
+          <div key={project._id} className="card mb-3 shadow">
             <h4 className="card-header custom-color text-light p-2 m-0">
               <Link className="text-light" to={`/user/${project._id}`}>
                 {project.projectAuthor} <br />
@@ -62,18 +76,34 @@ const ProjectList = (projects) => {
               </p>
               <p>Address: {project.address}</p>
             </div>
+
+            <div className='container m-2'>
+
             <Link
-              className="btn custom-color btn-squared text-white"
+              className="btn custom-color btn-squared text-white m-1"
               to={`/projects/${project._id}`}
             >
               Join the discussion on this project.
             </Link>
-            <button
+            {Auth.loggedIn() ? (
+           <button
+           onClick={() => removeProjectHandler(project._id)}
+           class="btn rounded delete-btn btn-danger m-1"
+         >
+           Delete
+         </button>
+          ) : (
+            <p> </p>
+          )}
+</div>
+            
+
+            {/* <button
               onClick={() => removeProjectHandler(project._id)}
               class="btn rounded delete-btn btn-dark"
             >
               Delete
-            </button>
+            </button> */}
           </div>
         ))}
     </div>

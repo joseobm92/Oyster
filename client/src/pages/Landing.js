@@ -7,7 +7,7 @@ import { QUERY_TRENDING_WITH_LOGS } from "../utils/queries";
 import Auth from "../utils/auth";
 
 import nft2 from "../images/nft2.json";
-
+import sharing from '../images/sharing.json'
 import Lottie from "lottie-react";
 import eth from "../images/eth.json";
 import Footer from "../components/Footer";
@@ -87,7 +87,7 @@ const Landing = () => {
           </div>
           <div className="col-md-8 border rounded p-4">
             <h1>
-              Top Sales in the past hour <span className="text-primary"> </span>
+              Top <span className="text-primary">Sales  </span> in the past hour 
             </h1>
             <div className="table-responsive">
               <table className="table table-borderless w-120  mt-4 table-hover bg-white ">
@@ -156,6 +156,40 @@ const Landing = () => {
           </div>
         </div>
       </div>
+
+            {/* Showcase 2 */}
+            <section className=" text-dark p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-7">
+              <h2 className="showcase">
+                Share Projects and Become part of the {" "}
+                <span className="text-primary"> Biggest NFT Community </span>{" "}
+              </h2>
+              <p className="lead my-4">
+                Wheter you are sharing your project idea or sharing your comments on someone else project, Oyster.io is your go to place.
+                <br></br>
+                Sign up to become part of our community.
+              </p>
+              <Link to="/projects">
+                <button type="button" className="btn btn-dark mb-3">
+                  Explore Projects{" "}
+                  <i className="bi bi-arrow-up-right"></i>{" "}
+                </button>
+              </Link>
+              <Link to="/signup" className="text-decoration-none">
+                <button type="button" className="btn btn-dark mb-3 d-block">
+                  Sign up <i className="bi bi-arrow-up-right"></i>{" "}
+                </button>
+              </Link>
+            </div>
+            <div className="col-md-4 align-self-center ">
+              <Lottie loop={true} animationData={sharing} />
+            </div>
+            {/* <img className="img-fluid d-none d-sm-block blockchain mb-3" src={blockchain} alt="showcase"></img> */}
+          </div>
+        </div>
+      </section>
 
       {/* Questions Accordion */}
       <section id="questions" className="p-5">
