@@ -22,7 +22,6 @@
     "axios": "^1.2.1",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.2",
-    "dotenv": "^16.0.3",
     "ethers": "^5.7.2",
     "graphql": "^16.5.0",
     "jwt-decode": "^3.1.2",
