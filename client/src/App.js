@@ -41,8 +41,6 @@ import Nav from "./components/Nav";
 import Collection from "./components/Collection";
 import "./App.css";
 
-import ProjectList from "./components/ProjectList";
-import Footer from "./components/Footer";
 import Trending from "./components/Trending";
 import Volume from "./components/Volume";
 import Sales from "./components/Sales";
@@ -83,7 +81,7 @@ const client = new ApolloClient({
 const { chains, provider } = configureChains(
   [mainnet],
   [
-    alchemyProvider({ apiKey: "w3CWn13KLWvDk0eWH6eo9qJL3zeP-2Dg" }),
+    alchemyProvider({ apiKey: process.env.REACT_APP_ALCHEMY_API }),
     publicProvider(),
   ]
 );
@@ -137,7 +135,6 @@ function App() {
                   element={Auth.loggedIn() ? <Dashboard /> : <ProtectRoute />}
                 />
               </Routes>
-              {/* <Footer /> */}
             </Router>
           </ApolloProvider>
         </RainbowKitProvider>
