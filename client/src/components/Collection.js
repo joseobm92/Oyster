@@ -191,7 +191,7 @@ const Collection = () => {
                   <a
                     src={collectionEtherscan}
                     href={collectionEtherscan}
-                    className="text-decoration-none text-black"
+                    className="text-decoration-none"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -202,46 +202,6 @@ const Collection = () => {
             </div>
           </div>
         </div>
-        {/* CAROUSEL */}
-        {/* <div
-          id="carouselExampleControls"
-          className="carousel slide"
-          data-bs-ride="carousel"
-        >
-          <div className="carousel-inner">
-            <div className="carousel-item active">
-              <img
-                src={collection.contract.tokens.edges[1].node.images[0].url}
-                className="collection"
-                alt="..."
-              />
-            </div>
-          </div>
-          <button
-            className="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselExampleControls"
-            data-bs-slide="prev"
-          >
-            <span
-              className="carousel-control-prev-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button
-            className="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselExampleControls"
-            data-bs-slide="next"
-          >
-            <span
-              className="carousel-control-next-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="visually-hidden">Next</span>
-          </button>
-        </div> */}
       </div>
     </div>
   );

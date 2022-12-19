@@ -33,6 +33,7 @@ import Dashboard from "./pages/Dashboard";
 import SingleProject from "./pages/SingleProject";
 import Collections from "./pages/Collections";
 import Projects from "./pages/Projects";
+import Team from "./pages/Team";
 
 /// IMPORT COMPONENTS ///
 import ProtectRoute from "./components/ProtectRoute";
@@ -119,6 +120,7 @@ function App() {
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/me" element={<Dashboard />} />
+                <Route path="/team" element={<Team />} />
                 <Route path="/collections" element={<Collections />} />
 
                 <Route path="/collections/:address" element={<Collection />} />
