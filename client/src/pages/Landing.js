@@ -7,7 +7,7 @@ import { QUERY_TRENDING_WITH_LOGS } from "../utils/queries";
 import Auth from "../utils/auth";
 
 import nft2 from "../images/nft2.json";
-import sharing from '../images/sharing.json'
+import sharing from "../images/sharing.json";
 import Lottie from "lottie-react";
 import eth from "../images/eth.json";
 import Footer from "../components/Footer";
@@ -46,18 +46,18 @@ const Landing = () => {
     <>
       {/* Showcase */}
       <section className=" text-dark p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
-        <div className="container">
+        <div className="container ">
           <div className="row">
-            <div className="col-md-7">
+            <div className="col-md-7 bg-white rounded">
               <h1 className="showcase">
-                Real-time NFT market insights{" "}
+                Real-Time NFT Market Insights{" "}
                 <span className="text-warning"></span>{" "}
               </h1>
               <p className="lead my-4">
-                Retrieving NFT metadata from the blockchain is tedious and
-                time-consuming. Our NFT app does the heavy lifting for you
-                across Solana and Ethereum NFTs, making the data you need
-                searchable and accessible.
+                Retrieving NFT data from the blockchain is tedious and
+                time-consuming. Our app does the heavy lifting for you across
+                Ethereum NFTs, making the data you need searchable and
+                accessible.
               </p>
               <Link to="/collections">
                 <button type="button" className="btn btn-dark mb-3">
@@ -87,7 +87,7 @@ const Landing = () => {
           </div>
           <div className="col-md-8 border rounded p-4">
             <h1>
-              Top <span className="text-primary">Sales  </span> in the past hour 
+              Top <span className="text-primary">Sales </span> in the past hour
             </h1>
             <div className="table-responsive">
               <table className="table table-borderless w-120  mt-4 table-hover bg-white ">
@@ -157,29 +157,29 @@ const Landing = () => {
         </div>
       </div>
 
-            {/* Showcase 2 */}
-            <section className=" text-dark p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
-        <div className="container">
+      {/* Showcase 2 */}
+      <section className=" text-dark p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
+        <div className="container ">
           <div className="row">
-            <div className="col-md-7">
+            <div className="col-md-7 bg-white rounded">
               <h2 className="showcase">
-                Share Projects and Become part of the {" "}
-                <span className="text-primary"> Biggest NFT Community </span>{" "}
+                Share your Project & Collaborate with others!
               </h2>
               <p className="lead my-4">
-                Wheter you are sharing your project idea or sharing your comments on someone else project, Oyster.io is your go to place.
+                Whether you are viewing data on your favorite collections,
+                collaborating with others on projects or keeping up to date with
+                what's trending, Oyster is your go to place.
                 <br></br>
-                Sign up to become part of our community.
+                Sign up to become a part of the Oyster community.
               </p>
               <Link to="/projects">
                 <button type="button" className="btn btn-dark mb-3">
-                  Explore Projects{" "}
-                  <i className="bi bi-arrow-up-right"></i>{" "}
+                  Explore Projects <i className="bi bi-arrow-up-right"></i>{" "}
                 </button>
               </Link>
               <Link to="/signup" className="text-decoration-none">
                 <button type="button" className="btn btn-dark mb-3 d-block">
-                  Sign up <i className="bi bi-arrow-up-right"></i>{" "}
+                  Become a member <i className="bi bi-arrow-up-right"></i>{" "}
                 </button>
               </Link>
             </div>
@@ -236,9 +236,10 @@ const Landing = () => {
                   data-bs-toggle="collapse"
                   data-bs-target="#question-two"
                 >
-                  Why would I want to own an NFT? Can I make money on it?
+                  What Data can I view?
                 </button>
               </h2>
+
               <div
                 id="question-two"
                 className="accordion-collapse collapse"
@@ -246,14 +247,22 @@ const Landing = () => {
                 data-bs-parent="#questions"
               >
                 <div className="accordion-body">
-                  One reason to buy an NFT is for its emotional value, which
-                  isn’t so different from physical objects...unless you’re a
-                  total utilitarian. No one buys lip gloss because they need it.
-                  They buy it for the way it makes them feel. The same can be
-                  true for a GIF, image, video, or other digital asset. The
-                  other reason is because you think it’s valuable...and will
-                  only increase in value. And yes, you can make money off of an
-                  NFT by buying and reselling it for more.
+                  <small>
+                    Currently all data is based off the 1 hour chart
+                  </small>
+                  <ul>
+                    <li>Top 5 NFT Collections Trending by volume </li>
+                    <li>Top 50 Collections Trending by Sales </li>
+                    <li>Top 50 Collections Trending by Volume </li>
+                    <li>
+                      Single Collection Floor Price, Volume, Number of Sales,
+                      Supply & Avg Purchase Price{" "}
+                    </li>
+                    <li>
+                      Single Collection Description, Website, Token Standard, &
+                      Official Etherscan Link{" "}
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -266,7 +275,7 @@ const Landing = () => {
                   data-bs-toggle="collapse"
                   data-bs-target="#question-three"
                 >
-                  What are the different use cases of a blockchain
+                  Why Should I Sign Up?
                 </button>
               </h2>
               <div
@@ -277,11 +286,15 @@ const Landing = () => {
               >
                 <div className="accordion-body">
                   <ul>
-                    <li>Money Transfer</li>
-                    <li>Smart Contracts</li>
-                    <li>Supply Chain Management</li>
-                    <li>Non-Fungible Tokens (NFTs)</li>
-                    <li>Personal Identity Security</li>
+                    <li>
+                      Personal Dashboard To Track your Favorite NFT Collections
+                    </li>
+                    <li>Create Projects</li>
+                    <li>Comment on Projects</li>
+                    <li>
+                      Discover what others are working on or creating and
+                      collaborate projects
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -295,7 +308,7 @@ const Landing = () => {
                   data-bs-toggle="collapse"
                   data-bs-target="#question-four"
                 >
-                  Common Cryptocurrency Terminology
+                  What is the "Connect Wallet" Button for?
                 </button>
               </h2>
               <div
@@ -305,31 +318,20 @@ const Landing = () => {
                 data-bs-parent="#questions"
               >
                 <div className="accordion-body">
-                  <ul>
-                    <li>
-                      Market Capitalization: is calculated by Price X
-                      Circulating Supply
-                    </li>
-                    <li>
-                      Circulating Supply: # of coins circulating in the market
-                      and in the general public's hands
-                    </li>
-                    <li>
-                      Total Supply: Is the total amount of coins in existence
-                      right now
-                    </li>
-                    <li>
-                      Max Supply: Maximum amount of coins that will ever exist
-                      in the lifetime of the cryptocurrency
-                    </li>
-                    <li>
-                      Coin vs Token: A Coin is a cryptocurrency that can operate
-                      independently. A Token is a cryptocurrency that depends on
-                      another cryptocurrency as a platform to operate. Check out
-                      the crypto tokens listings to view a list of tokens and
-                      their respective platforms.{" "}
-                    </li>
-                  </ul>
+                  The button is an extra feature that allows the app to fetch
+                  data from the blockchain. Specifically a user's NFTs which you
+                  can view in your own private gallery in the Dashboard. To use
+                  this feature a user must own a{" "}
+                  <a
+                    className="text-decoration-none"
+                    src="https://metamask.io/"
+                    href="https://metamask.io/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    MetaMask
+                  </a>{" "}
+                  wallet
                 </div>
               </div>
             </div>
@@ -342,7 +344,7 @@ const Landing = () => {
                   data-bs-toggle="collapse"
                   data-bs-target="#question-five"
                 >
-                  Investing in Crypto
+                  I'm new, what can I do to get started?
                 </button>
               </h2>
               <div
@@ -354,16 +356,56 @@ const Landing = () => {
                 <div className="accordion-body">
                   <ul>
                     <li>
-                      Create an <a href="/signup">Account</a>
+                      Create an{" "}
+                      <a href="/signup " className="text-decoration-none">
+                        Account
+                      </a>
+                    </li>
+                    <li>Explore the different collections</li>
+                    <li>
+                      Refer to one of the major Marketplaces below{" "}
+                      <ul>
+                        <li>
+                          <a
+                            src="https://opensea.io/"
+                            href="https://opensea.io/"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-decoration-none"
+                          >
+                            Opensea
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            src="https://looksrare.org/"
+                            href="https://looksrare.org/"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-decoration-none"
+                          >
+                            LooksRare
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            src="https://blur.io/"
+                            href="https://blur.io/"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-decoration-none"
+                          >
+                            Blur
+                          </a>
+                        </li>
+                      </ul>
                     </li>
                     <li>
-                      Refer to one of the major Exchanges on the website{" "}
-                      <a href="/exchanges">Visit Exchanges</a>
-                    </li>
-                    <li>
-                      We recommend a DYOR mindset when it comes to investing in
-                      the crypto market due to its high volatility. Invest at
-                      your own risk
+                      We recommend a DYOR mindset when it comes to buying
+                      digital assets. Digital assets are built on the blockchain
+                      and are dependant of crypto. Similar to the crypto market
+                      Digital Assets/Collectibles (NFTs) are highly volatile.
+                      Collect at your own risk.
                     </li>
                   </ul>
                 </div>

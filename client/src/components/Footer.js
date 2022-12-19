@@ -35,25 +35,23 @@ const Footer = () => {
             </ul>
             <h5>Watch</h5>
             <ul className="list-unstyled text-decoration-none">
-              <Link
-                to="/me"
-                className="text-decoration-none  text-muted">
+              <Link to="/me" className="text-decoration-none  text-muted">
                 <li> Watchlist </li>
               </Link>
-              <Link
-                to="/projects"
-                className="text-decoration-none  text-muted">
+              <Link to="/projects" className="text-decoration-none  text-muted">
                 <li> View Projects </li>
               </Link>
-             
             </ul>
           </div>
 
           <div className="col-md-4">
             <h5>Company</h5>
             <ul className="list-unstyled text-decoration-none">
-              <Link to="" className="text-decoration-none text-white text-muted">
-                <li> Contact us</li>
+              <Link
+                to="/team"
+                className="text-decoration-none text-white text-muted"
+              >
+                <li> Dev Team</li>
               </Link>
               <Link to="" className="text-decoration-none text-muted">
                 <li> Roadmap</li>
