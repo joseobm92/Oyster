@@ -48,6 +48,8 @@ import Sales from "./components/Sales";
 // Particles Bg
 import Particles from "./components/Particles";
 
+
+
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
@@ -84,7 +86,10 @@ const { chains, provider } = configureChains(
     alchemyProvider({ apiKey: process.env.REACT_APP_ALCHEMY_API }),
     publicProvider(),
   ]
+  
 );
+console.log(process.env.REACT_APP_ALCHEMY_API)
+
 
 const { connectors } = getDefaultWallets({
   appName: "Oyster",
