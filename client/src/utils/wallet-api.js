@@ -1,6 +1,6 @@
 import axios from "axios";
 
-
+console.log(process.env.REACT_APP_MORALIS_API);
 
 const grabNFTs = async (address) => {
   const options = {
@@ -12,7 +12,8 @@ const grabNFTs = async (address) => {
       "X-API-Key": process.env.REACT_APP_MORALIS_API,
     },
   };
-  console.log(process.env.REACT_APP_MORALIS_API)
+  console.log('here is moralis api', process.env.REACT_APP_MORALIS_API);
+  
   try {
     const response = await axios.request(options);
     console.log(response.data.result);
