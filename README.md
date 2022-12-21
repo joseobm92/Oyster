@@ -30,7 +30,7 @@
   
   
 </div>
----
+
 
 ## Welcome to Oyster!
 
@@ -54,6 +54,7 @@ Fresh-off-the-blockchain NFT market insights, with custom portfolios and galleri
 </div>
 
 <br />
+
 ## About
 
 Oyster is an exciting new way for NFT collectors and creators to explore the digitable collectables market. With Oyster, users can view real-time NFT metadata from the blockchain. 
@@ -78,7 +79,7 @@ Looking to connect? Users can join our Oyster community to discuss and share pro
 * To use, Oyster, simply visit our [website](). 
 * To view NFT collections, navigate to the `Products` button, and select how you would like to sort the collections. 
 * Don't forget to click `sign up` and log in to explore all Oyster has to offer. 
-* If you don't have a wallet, Oyster will easily guide you through the process by selecting `Connect Wallet`
+* If you don't have a digital wallet, Oyster will easily guide you through the process by selecting `Connect Wallet`
 
 <br />
 
