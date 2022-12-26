@@ -18,9 +18,9 @@ const resolvers = {
     // Get logged in user
     me: async (parent, args, context) => {
       if (context.user) {
-        const userData = await User.findOne({ _id: context.user._id }).populate(
-          "collections"
-        );
+        const userData = await User.findOne({ _id: context.user._id })
+          .populate("collections")
+          .populate("projects");
         return userData;
       }
       //throw new AuthenticationError('You need to be logged in!');

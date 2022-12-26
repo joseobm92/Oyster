@@ -16,35 +16,6 @@ const Nav = () => {
     Auth.logout();
   };
 
-  // const account = useAccount({
-  //   onConnect({ address, connector, isReconnected}) {
-  //     console.log('Connected', {address, connector, isReconnected})
-  //     console.log(address);
-
-  //   },
-  //   onDisconnect() {
-  //     console.log('disconnected');
-  //   }
-  // });
-
-  // if(account.address) {
-  //   console.log(account.address);
-
-  //   const { loading, error, data } = useQuery(QUERY_COLLECTION_FOR_ADDRESS,
-  //     {
-  //       context: { clientName: 'endpoint2' },
-  //       variables: {
-  //         address: account.address,
-  //       }
-  //     });
-  //   //console.log(data);
-  //   if (loading) return null;
-  //   if (error) return `Error! ${error}`;
-  //   const collections =  data.wallet.tokens.edges;
-
-  //   console.log(collections)
-  // }
-
   return (
     <div>
       <nav
@@ -112,11 +83,7 @@ const Nav = () => {
                   Explore Projects
                 </Link>
               </li>
-              {/* <li className="nav-item">
-                <Link to="/collections" className="nav-link text-white">
-                  Trending 
-                </Link>
-              </li> */}
+
               {Auth.loggedIn() ? (
                 <>
                   <li className="nav-item">

@@ -54,9 +54,6 @@ const Watchlist = () => {
         refetchQueries: [
           {
             query: QUERY_ME,
-            // variables: {
-            //   courseId: courseId,
-            // }
           },
         ],
       });
@@ -71,13 +68,6 @@ const Watchlist = () => {
 
   return (
     <div className="container mt-4">
-      {/* 
-<h1>Dashboard <span className="text-primary"> </span></h1>
-<small>Welcome back,<span className="text-primary"> {user.username}  </span> </small>
-
-<button>My Gallery</button>
-<button onClick={displayWatchlist}>My Watchlist</button> */}
-
       <div className="table-responsive bg-white">
         <table className="table table-borderless w-120  mt-4 table-hover ">
           <thead>

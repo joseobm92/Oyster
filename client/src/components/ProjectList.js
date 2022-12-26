@@ -5,7 +5,7 @@ import Auth from "../utils/auth";
 
 import { useMutation, useQuery } from "@apollo/client";
 
-import { QUERY_ME } from "../utils/queries";
+import { QUERY_ME, QUERY_PROJECTS } from "../utils/queries";
 import { REMOVE_PROJECT } from "../utils/mutations";
 
 const ProjectList = (projects) => {
@@ -28,6 +28,9 @@ const ProjectList = (projects) => {
         },
         refetchQueries: [
           {
+            query: QUERY_PROJECTS,
+          },
+          {
             query: QUERY_ME,
           },
         ],
@@ -40,18 +43,16 @@ const ProjectList = (projects) => {
   };
 
   return (
-    <div className='container mt-3'>
-       {Auth.loggedIn() ? (
-           <p> </p>
-          
-          ) : (
-            <Link to="/login" className="text-decoration-none">
-                <button type="button" className="btn btn-dark mb-3 d-block">
-                  Share Project <i className="bi bi-arrow-up-right"></i>{" "}
-                </button>
-              </Link>
-          )}
-
+    <div className="container mt-3">
+      {Auth.loggedIn() ? (
+        <p> </p>
+      ) : (
+        <Link to="/login" className="text-decoration-none">
+          <button type="button" className="btn btn-dark mb-3 d-block">
+            Share Project <i className="bi bi-arrow-up-right"></i>{" "}
+          </button>
+        </Link>
+      )}
 
       {projectList &&
         projectList.map((project) => (
@@ -77,33 +78,25 @@ const ProjectList = (projects) => {
               <p>Address: {project.address}</p>
             </div>
 
-            <div className='container m-2'>
-
-            <Link
-              className="btn custom-color btn-squared text-white m-1"
-              to={`/projects/${project._id}`}
-            >
-              Join the discussion on this project.
-            </Link>
-            {Auth.loggedIn() ? (
-           <button
-           onClick={() => removeProjectHandler(project._id)}
-           class="btn rounded delete-btn btn-danger m-1"
-         >
-           Delete
-         </button>
-          ) : (
-            <p> </p>
-          )}
-</div>
-            
-
-            {/* <button
-              onClick={() => removeProjectHandler(project._id)}
-              class="btn rounded delete-btn btn-dark"
-            >
-              Delete
-            </button> */}
+            <div className="container m-2">
+              <Link
+                className="btn custom-color btn-squared text-white m-1"
+                to={`/projects/${project._id}`}
+              >
+                Join the discussion on this project.
+              </Link>
+              {Auth.loggedIn() &&
+              Auth.getUser().data.username === project.projectAuthor ? (
+                <button
+                  onClick={() => removeProjectHandler(project._id)}
+                  className="btn rounded delete-btn btn-danger m-1"
+                >
+                  Delete
+                </button>
+              ) : (
+                <p> </p>
+              )}
+            </div>
           </div>
         ))}
     </div>
