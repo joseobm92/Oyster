@@ -14,7 +14,6 @@ import { REMOVE_PROJECT } from "../utils/mutations";
 const SingleProject = () => {
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
   const { projectId } = useParams();
-  const [isProjectFormShown, setIsProjectFormShown] = useState(false);
   const [removeProject, { error }] = useMutation(REMOVE_PROJECT, {});
 
   const removeProjectHandler = async (id) => {
@@ -51,9 +50,6 @@ const SingleProject = () => {
     return <div>Loading...</div>;
   }
 
-  const addProjectHandleClick = () => {
-    setIsProjectFormShown((current) => !current);
-  };
   return (
     <div className="container mb-3 ">
       <div className="card mb-3 shadow">
@@ -77,52 +73,81 @@ const SingleProject = () => {
           </p>
           <p>Address: {project.address}</p>
         </div>
-        {Auth.loggedIn() ? (<>
-         
-            <div className='container'>
-
-              <button onClick={addProjectHandleClick} className="btn btn-dark m-2">
+        {Auth.loggedIn() ? (
+          <>
+            <div className="container">
+              <button
+                type="button"
+                className="btn btn-dark m-2"
+                data-bs-toggle="modal"
+                data-bs-target="#formModal"
+              >
                 Update Project
               </button>
               <button
                 onClick={() => removeProjectHandler(project._id)}
-                class="btn btn-danger m-2"
+                className="btn btn-danger m-2"
               >
                 Delete Project
               </button>
             </div>
-          
-        </>
+          </>
         ) : (
-          <div className='container m-2'>
-
-          <Link
-            className="btn custom-color"
-            to={`/login`}
-          >
-            Join the discussion on this project.
-          </Link>
+          <div className="container m-2">
+            <Link className="btn custom-color" to={`/login`}>
+              Join the discussion on this project.
+            </Link>
           </div>
         )}
-
-        {isProjectFormShown && <UpdateProjectForm projectId={projectId} />}
-
-        {/* <Link
-          className="btn custom-color btn-block btn-squared"
-          to={`/projects/${project._id}`}
-        >
-          Join the discussion on this project.
-        </Link> */}
       </div>
-        <div className='container mt-2'>
+      <div className="container mt-2">
+        <div className="shadow">
+          <CommentList comments={project.comments} />
+        </div>
+        <div
+          className=" mt-3 p-4 rounded bg-white shadow"
+          style={{ border: "1px dotted #1a1a1a" }}
+        >
+          <CommentForm projectId={project._id} />
+        </div>
+      </div>
 
-          <div className="shadow">
-            <CommentList comments={project.comments} />
-          </div>
-          <div className=" mt-3 p-4 rounded bg-white shadow" style={{ border: "1px dotted #1a1a1a" }}>
-            <CommentForm projectId={project._id} />
+      {/* Modal */}
+      <div
+        className="modal fade"
+        id="formModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLabel">
+                Update Project
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+              <UpdateProjectForm project={project} />
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
           </div>
         </div>
+      </div>
     </div>
   );
 };

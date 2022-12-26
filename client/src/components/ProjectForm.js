@@ -92,66 +92,120 @@ const ProjectForm = () => {
   };
 
   return (
-    <div className='container m-3'>
-
-
+    <div className="container m-3">
       {Auth.loggedIn() ? (
         <>
+          <div className="container">
+            <div className="row justify-content-center">
+              <div>
+                <h1> Want to collab with others? Add your project</h1>
+                <small>
+                  {" "}
+                  Ready to take your project to the next level? share it and
+                  interact with the community.
+                </small>
 
-<div className='container'>
-          <div className='row justify-content-center'>
-            <div className='col-md-8 mt-5'>
-              <h1> Want to Collab with others? Add your project</h1>
-              <small className=''> Ready to take your project to the next level? share it and interact with the community.</small>
+                <form onSubmit={handleFormSubmit}>
+                  <div className=" form-floating mb-3 mt-3">
+                    <input
+                      type="projectName"
+                      className="form-control"
+                      id="floatingName"
+                      name="projectName"
+                      placeholder="Your Projects Name"
+                      value={projectName}
+                      onChange={handleChange}
+                    ></input>
+                    <label for="ProjectName" className="floatingName">
+                      Project Name
+                    </label>
+                    <div id="projectNameHelp" className="form-text">
+                      {" "}
+                    </div>
+                  </div>
 
-              <form onSubmit={handleFormSubmit}>
+                  <div className=" form-floating mb-3">
+                    <input
+                      type="symbol"
+                      className="form-control"
+                      id="floatingProjectSymbol"
+                      name="projectSymbol"
+                      placeholder="Project Symbol"
+                      value={projectSymbol}
+                      onChange={handleChange}
+                    ></input>
+                    <label for="symbol" className="floatingProjectSymbol">
+                      Symbol
+                    </label>
+                  </div>
 
-                <div className=" form-floating mb-3 mt-3">
-                  <input type="projectName" className="form-control" id="floatingName" name='projectName' placeholder='Your Projects Name' value={projectName} onChange={handleChange}></input>
-                  <label for="ProjectName" className="floatingName">Project Name</label>
-                  <div id="projectNameHelp" className="form-text"> </div>
-                </div>
+                  <div className=" form-floating mb-3">
+                    <input
+                      type="supply"
+                      className="form-control"
+                      id="floatingProjectSupply"
+                      name="projectSupply"
+                      placeholder="Total Supply"
+                      value={projectSupply}
+                      onChange={handleChange}
+                    ></input>
+                    <label for="supply" className="floatingProjectSupply">
+                      Total Supply
+                    </label>
+                  </div>
 
-                <div className=" form-floating mb-3">
-                  <input type="symbol" className="form-control" id="floatingProjectSymbol" name='projectSymbol' placeholder='Project Symbol' value={projectSymbol} onChange={handleChange}></input>
-                  <label for="symbol" className="floatingProjectSymbol">Symbol</label>
-                </div>
+                  <div className=" form-floating mb-3">
+                    <input
+                      type="website"
+                      className="form-control"
+                      id="floatingProjectWebsite"
+                      name="projectWebsite"
+                      placeholder="Website URL"
+                      value={projectWebsite}
+                      onChange={handleChange}
+                    ></input>
+                    <label for="website" className="floatingProjectWebsite">
+                      Website URL
+                    </label>
+                  </div>
 
-               
+                  <div className=" form-floating mb-3">
+                    <input
+                      type="address"
+                      className="form-control"
+                      id="floatingProjectAddress"
+                      name="projectAddress"
+                      placeholder="Address"
+                      value={projectAddress}
+                      onChange={handleChange}
+                    ></input>
+                    <label for="address" className="floatingProjectAddress">
+                      Address
+                    </label>
+                  </div>
 
-                <div className=" form-floating mb-3">
-                  <input type="supply" className="form-control" id="floatingProjectSupply" name='projectSupply' placeholder='Total Supply' value={projectSupply} onChange={handleChange}></input>
-                  <label for="supply" className="floatingProjectSupply">Total Supply</label>
-                </div>
+                  <div className=" form-floating mb-3">
+                    <input
+                      type="logo"
+                      className="form-control"
+                      id="floatingProjectLogo"
+                      name="projectLogo"
+                      placeholder="Project Logo"
+                      value={projectLogo}
+                      onChange={handleChange}
+                    ></input>
+                    <label for="logo" className="floatingProjectLogo">
+                      Logo
+                    </label>
+                  </div>
 
-
-                <div className=" form-floating mb-3">
-                  <input type="website" className="form-control" id="floatingProjectWebsite" name='projectWebsite' placeholder='Website URL' value={projectWebsite} onChange={handleChange}></input>
-                  <label for="website" className="floatingProjectWebsite">Website URL</label>
-                </div>
-
-
-                <div className=" form-floating mb-3">
-                  <input type="address" className="form-control" id="floatingProjectAddress" name='projectAddress' placeholder='Address' value={projectAddress} onChange={handleChange}></input>
-                  <label for="address" className="floatingProjectAddress">Address</label>
-                </div>
-
-
-                <div className=" form-floating mb-3">
-                  <input type="logo" className="form-control" id="floatingProjectLogo" name='projectLogo' placeholder='Project Logo' value={projectLogo} onChange={handleChange}></input>
-                  <label for="logo" className="floatingProjectLogo">Logo</label>
-                </div>
-
-                <button className="btn btn-dark btn-block py-3" type="submit">
-                Add Project
-              </button>
-                
-              </form>
+                  <button className="btn btn-dark btn-block py-3" type="submit">
+                    Add Project
+                  </button>
+                </form>
+              </div>
             </div>
-
           </div>
-
-        </div>
           {/* <p
             className={`m-0 ${
               characterCount === 280 || error ? "text-danger" : ""
@@ -159,7 +213,6 @@ const ProjectForm = () => {
           >
             Character Count: {characterCount}/280
           </p> */}
-         
         </>
       ) : (
         <p>
