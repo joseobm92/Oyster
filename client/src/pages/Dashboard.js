@@ -15,7 +15,6 @@ import Auth from "../utils/auth";
 const Profile = () => {
   const { userId } = useParams();
 
-  const [isProjectFormShown, setIsProjectFormShown] = useState(false);
   const [isNftShown, setIsNftShown] = useState(false);
   const [isProjectListShown, setIsProjectListShown] = useState(false);
 
@@ -39,10 +38,6 @@ const Profile = () => {
   if (Auth.loggedIn() && Auth.getUser().data._id === userId) {
     return <Navigate to="/me" />;
   }
-
-  const addProjectHandleClick = () => {
-    setIsProjectFormShown((current) => !current);
-  };
 
   const viewNFTsHandleClick = () => {
     setIsNftShown((current) => !current);
@@ -80,7 +75,13 @@ const Profile = () => {
         Welcome back,<span className="text-primary"> {user.username} </span>{" "}
       </small>
       <Watchlist />
-      <button onClick={addProjectHandleClick} className="btn btn-dark m-2">
+
+      <button
+        type="button"
+        className="btn btn-dark m-2"
+        data-bs-toggle="modal"
+        data-bs-target="#formModal"
+      >
         Add Project
       </button>
       <button onClick={viewNFTsHandleClick} className="btn btn-dark m-2">
@@ -89,9 +90,45 @@ const Profile = () => {
       <button onClick={viewProjectListHandleClick} className="btn btn-dark m-2">
         View Your Projects
       </button>
-      {isProjectFormShown && <ProjectForm />}
       {isProjectListShown && <ProjectList projects={user.projects} />}
       {isNftShown && <Gallery />}
+
+      {/* Modal */}
+      <div
+        className="modal fade"
+        id="formModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLabel">
+                Add a Project
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+              <ProjectForm />
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

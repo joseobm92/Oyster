@@ -3,21 +3,25 @@ import { Link, useParams } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 
 import { UPDATE_PROJECT } from "../utils/mutations";
-import { QUERY_PROJECTS, QUERY_ME } from "../utils/queries";
+import {
+  QUERY_PROJECTS,
+  QUERY_ME,
+  QUERY_SINGLE_PROJECT,
+} from "../utils/queries";
 
 import Auth from "../utils/auth";
 
-const UpdateProjectForm = (id) => {
-  const [projectName, setProjectName] = useState("");
-  const [projectSymbol, setProjectSymbol] = useState("");
-  const [projectSupply, setProjectSupply] = useState("");
-  const [projectWebsite, setProjectWebsite] = useState("");
-  const [projectLogo, setProjectLogo] = useState("");
-  const [projectAddress, setProjectAddress] = useState("");
+const UpdateProjectForm = ({ project }) => {
+  const [projectName, setProjectName] = useState(project.name);
+  const [projectSymbol, setProjectSymbol] = useState(project.symbol);
+  const [projectSupply, setProjectSupply] = useState(project.supply);
+  const [projectWebsite, setProjectWebsite] = useState(project.website);
+  const [projectLogo, setProjectLogo] = useState(project.logo);
+  const [projectAddress, setProjectAddress] = useState(project.address);
 
   const [characterCount, setCharacterCount] = useState(0);
 
-  console.log("this is from the update project form", id);
+  console.log("this is from the update project form", project);
   const [updateProject, { error }] = useMutation(UPDATE_PROJECT, {
     // update(cache, { data: { updateProject } }) {
     //   try {
@@ -53,8 +57,14 @@ const UpdateProjectForm = (id) => {
           website: projectWebsite,
           symbol: projectSymbol,
           supply: projectSupply,
-          projectId: id.projectId,
+          projectId: project._id,
         },
+        refetchQueries: [
+          {
+            query: QUERY_SINGLE_PROJECT,
+            variables: { projectId: project._id },
+          },
+        ],
       });
 
       setProjectName("");
@@ -93,7 +103,7 @@ const UpdateProjectForm = (id) => {
 
   return (
     <div>
-      <h3>Want to Collab with others? Add your project</h3>
+      <h3>Update your current project</h3>
 
       {Auth.loggedIn() ? (
         <>
@@ -171,7 +181,11 @@ const UpdateProjectForm = (id) => {
             </div>
 
             <div className="col-12 col-lg-3">
-              <button className="btn btn-primary btn-block py-3" type="submit">
+              <button
+                className="btn btn-dark btn-block py-3"
+                type="submit"
+                data-bs-dismiss="modal"
+              >
                 Update Project
               </button>
             </div>
