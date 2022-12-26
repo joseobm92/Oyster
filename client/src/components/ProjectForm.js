@@ -199,20 +199,17 @@ const ProjectForm = () => {
                     </label>
                   </div>
 
-                  <button className="btn btn-dark btn-block py-3" type="submit">
+                  <button
+                    className="btn btn-dark btn-block py-3"
+                    type="submit"
+                    data-bs-dismiss="modal"
+                  >
                     Add Project
                   </button>
                 </form>
               </div>
             </div>
           </div>
-          {/* <p
-            className={`m-0 ${
-              characterCount === 280 || error ? "text-danger" : ""
-            }`}
-          >
-            Character Count: {characterCount}/280
-          </p> */}
         </>
       ) : (
         <p>

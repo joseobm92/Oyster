@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-// Import the `useParams()` hook
-import { useParams, Link } from "react-router-dom";
+import React from "react";
+
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 import Auth from "../utils/auth";
 
@@ -8,13 +8,18 @@ import CommentList from "../components/CommentList";
 import CommentForm from "../components/CommentForm";
 import UpdateProjectForm from "../components/UpdateProjectForm";
 
-import { QUERY_SINGLE_PROJECT, QUERY_ME } from "../utils/queries";
+import {
+  QUERY_SINGLE_PROJECT,
+  QUERY_ME,
+  QUERY_PROJECTS,
+} from "../utils/queries";
 import { REMOVE_PROJECT } from "../utils/mutations";
 
 const SingleProject = () => {
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
   const { projectId } = useParams();
   const [removeProject, { error }] = useMutation(REMOVE_PROJECT, {});
+  const navigate = useNavigate();
 
   const removeProjectHandler = async (id) => {
     try {
@@ -28,6 +33,9 @@ const SingleProject = () => {
           {
             query: QUERY_ME,
           },
+          {
+            query: QUERY_PROJECTS,
+          },
         ],
       });
 
@@ -35,6 +43,7 @@ const SingleProject = () => {
     } catch (error) {
       console.error("This is in the remove from favorites", error);
     }
+    navigate("/me");
   };
 
   const { loading, data } = useQuery(QUERY_SINGLE_PROJECT, {
@@ -46,6 +55,7 @@ const SingleProject = () => {
 
   console.log(project);
   console.log(projectId);
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -73,7 +83,8 @@ const SingleProject = () => {
           </p>
           <p>Address: {project.address}</p>
         </div>
-        {Auth.loggedIn() ? (
+        {Auth.loggedIn() &&
+        Auth.getUser().data.username === project.projectAuthor ? (
           <>
             <div className="container">
               <button
@@ -84,10 +95,12 @@ const SingleProject = () => {
               >
                 Update Project
               </button>
+
               <button
                 onClick={() => removeProjectHandler(project._id)}
                 className="btn btn-danger m-2"
               >
+                {/* <Navigate to="/me" /> */}
                 Delete Project
               </button>
             </div>
