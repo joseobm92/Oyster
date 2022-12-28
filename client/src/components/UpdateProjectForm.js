@@ -114,7 +114,112 @@ const UpdateProjectForm = ({ project }) => {
           >
             Character Count: {characterCount}/280
           </p> */}
-          <form
+
+                          <form onSubmit={handleFormSubmit}>
+                  <div className=" form-floating mb-3 mt-3">
+                    <input
+                      type="projectName"
+                      className="form-control"
+                      id="floatingName"
+                      name="projectName"
+                      placeholder="Your Projects Name"
+                      value={projectName}
+                      onChange={handleChange}
+                    ></input>
+                    <label for="ProjectName" className="floatingName">
+                      Project Name
+                    </label>
+                    <div id="projectNameHelp" className="form-text">
+                      {" "}
+                    </div>
+                  </div>
+
+                  <div className=" form-floating mb-3">
+                    <input
+                      type="symbol"
+                      className="form-control"
+                      id="floatingProjectSymbol"
+                      name="projectSymbol"
+                      placeholder="Project Symbol"
+                      value={projectSymbol}
+                      onChange={handleChange}
+                    ></input>
+                    <label for="symbol" className="floatingProjectSymbol">
+                      Symbol
+                    </label>
+                  </div>
+
+                  <div className=" form-floating mb-3">
+                    <input
+                      type="supply"
+                      className="form-control"
+                      id="floatingProjectSupply"
+                      name="projectSupply"
+                      placeholder="Total Supply"
+                      value={projectSupply}
+                      onChange={handleChange}
+                    ></input>
+                    <label for="supply" className="floatingProjectSupply">
+                      Total Supply
+                    </label>
+                  </div>
+
+                  <div className=" form-floating mb-3">
+                    <input
+                      type="website"
+                      className="form-control"
+                      id="floatingProjectWebsite"
+                      name="projectWebsite"
+                      placeholder="Website URL"
+                      value={projectWebsite}
+                      onChange={handleChange}
+                    ></input>
+                    <label for="website" className="floatingProjectWebsite">
+                      Website URL
+                    </label>
+                  </div>
+
+                  <div className=" form-floating mb-3">
+                    <input
+                      type="address"
+                      className="form-control"
+                      id="floatingProjectAddress"
+                      name="projectAddress"
+                      placeholder="Address"
+                      value={projectAddress}
+                      onChange={handleChange}
+                    ></input>
+                    <label for="address" className="floatingProjectAddress">
+                      Address
+                    </label>
+                  </div>
+
+                  <div className=" form-floating mb-3">
+                    <input
+                      type="logo"
+                      className="form-control"
+                      id="floatingProjectLogo"
+                      name="projectLogo"
+                      placeholder="Project Logo"
+                      value={projectLogo}
+                      onChange={handleChange}
+                    ></input>
+                    <label for="logo" className="floatingProjectLogo">
+                      Logo
+                    </label>
+                  </div>
+
+                  <button
+                    className="btn btn-dark btn-block py-3"
+                    type="submit"
+                    data-bs-dismiss="modal"
+                  >
+                    Add Project
+                  </button>
+                </form>
+
+{/* old one */}
+          {/* <form
             className="flex-row justify-center justify-space-between-md align-center"
             onSubmit={handleFormSubmit}
           >
@@ -194,7 +299,7 @@ const UpdateProjectForm = ({ project }) => {
                 {error.message}
               </div>
             )}
-          </form>
+          </form> */}
         </>
       ) : (
         <p>

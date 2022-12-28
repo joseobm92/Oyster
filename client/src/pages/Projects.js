@@ -8,6 +8,7 @@ import { QUERY_PROJECTS } from "../utils/queries";
 const Projects = () => {
   const { loading, data } = useQuery(QUERY_PROJECTS);
   console.log(data);
+  
   const projects = data?.projects || [];
   console.log(projects);
 
