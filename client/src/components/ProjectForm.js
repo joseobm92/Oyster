@@ -91,6 +91,10 @@ const ProjectForm = () => {
     }
   };
 
+  fileSelectedHandler = event => {
+    console.log(event.target.files[0]);
+  }
+
   return (
     <div className="container m-3">
       {Auth.loggedIn() ? (
@@ -107,6 +111,8 @@ const ProjectForm = () => {
 
                 <form onSubmit={handleFormSubmit}>
                   <div className=" form-floating mb-3 mt-3">
+
+
                     <input
                       type="projectName"
                       className="form-control"

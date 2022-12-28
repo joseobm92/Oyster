@@ -38,11 +38,11 @@ const Profile = () => {
   if (Auth.loggedIn() && Auth.getUser().data._id === userId) {
     return <Navigate to="/me" />;
   }
-
+// display NFTs on your wallet
   const viewNFTsHandleClick = () => {
     setIsNftShown((current) => !current);
   };
-
+// display project list
   const viewProjectListHandleClick = () => {
     setIsProjectListShown((current) => !current);
   };
@@ -75,7 +75,7 @@ const Profile = () => {
         Welcome back,<span className="text-primary"> {user.username} </span>{" "}
       </small>
       <Watchlist />
-
+{/* Bottons with add project, view your nfts, view your projects */}
       <button
         type="button"
         className="btn btn-dark m-2"

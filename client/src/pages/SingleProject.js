@@ -19,6 +19,7 @@ const SingleProject = () => {
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
   const { projectId } = useParams();
   const [removeProject, { error }] = useMutation(REMOVE_PROJECT, {});
+  // useNavigate();
   const navigate = useNavigate();
 
   const removeProjectHandler = async (id) => {
@@ -62,6 +63,8 @@ const SingleProject = () => {
 
   return (
     <div className="container mb-3 ">
+
+      
       <div className="card mb-3 shadow">
         <h4 className="card-header custom-color text-light p-2">
           <Link className="text-light" to={`/user/${project._id}`}>
@@ -106,22 +109,28 @@ const SingleProject = () => {
             </div>
           </>
         ) : (
-          <div className="container m-2">
-            <Link className="btn custom-color" to={`/login`}>
-              Join the discussion on this project.
-            </Link>
-          </div>
+          <></>
+          // <div className="container m-2">
+          //   <Link className="btn custom-color" to={`/login`}>
+          //     Join the discussion on this project.
+          //   </Link>
+          // </div>
         )}
       </div>
+
       <div className="container mt-2">
-        <div className="shadow">
-          <CommentList comments={project.comments} />
-        </div>
-        <div
-          className=" mt-3 p-4 rounded bg-white shadow"
-          style={{ border: "1px dotted #1a1a1a" }}
-        >
-          <CommentForm projectId={project._id} />
+        <div className="row">
+          {/* include comment list */}
+          <div className="col">
+            <CommentList comments={project.comments} />
+          </div>
+          <div
+            className="col p-4 rounded bg-white shadow"
+            style={{ border: "1px dotted #1a1a1a" }}
+          >
+            {/* include comment form */}
+            <CommentForm projectId={project._id} />
+          </div>
         </div>
       </div>
 

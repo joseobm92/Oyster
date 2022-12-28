@@ -25,7 +25,12 @@ const CommentList = ({ comments = [] }) => {
           </h3>
           {comments.map((comment) => (
             <div key={comment._id} className="col-12 mb-3">
-              <div className="border rounded bg-white">
+              <h5> {comment.commentAuthor} Commented: </h5>
+              <p className="text-muted">{comment.commentText}</p>
+              <p className='text-end px-3 border-bottom'> created on <span className='text-watning'>{comment.createdAt} </span>  </p>
+
+              {/* old */}
+              {/* <div className="border rounded bg-white">
                 <h5 className="card-header custom-color text-light p-3">
                   {comment.commentAuthor} commented:{" "}
                  
@@ -36,7 +41,7 @@ const CommentList = ({ comments = [] }) => {
                 </div>
                 
                 <p className='text-end px-3'> created on <span className='text-watning'>{comment.createdAt} </span>  </p>
-              </div>
+              </div> */}
             </div>
           ))}
         </div>
